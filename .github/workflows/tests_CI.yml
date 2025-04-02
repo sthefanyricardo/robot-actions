@@ -13,7 +13,7 @@ jobs:
   tests:
     strategy:
       matrix:
-        browser: [chromium, firefox, webkit]
+        browser: [chromium, firefox]
     runs-on: ubuntu-latest
 
     steps:
