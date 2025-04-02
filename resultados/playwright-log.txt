@@ -1,0 +1,242 @@
+{"level":30,"time":"2025-04-02T16:55:31.922Z","pid":7180,"hostname":"familiaAR","msg":"Listening on 58930"}
+(node:7180) DeprecationWarning: Calling start() is no longer necessary. It can be safely omitted.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+{"level":30,"time":"2025-04-02T16:55:32.661Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method newBrowser"}
+{"level":30,"time":"2025-04-02T16:55:32.950Z","pid":7180,"hostname":"familiaAR","msg":"Adding browser to stack: chromium, version: 134.0.6998.35"}
+{"level":30,"time":"2025-04-02T16:55:32.952Z","pid":7180,"hostname":"familiaAR","msg":"End of node method newBrowser"}
+{"level":30,"time":"2025-04-02T16:55:32.952Z","pid":7180,"hostname":"familiaAR","msg":"Adding 0 contexts to browser"}
+{"level":30,"time":"2025-04-02T16:55:32.972Z","pid":7180,"hostname":"familiaAR","msg":"currentBrowser: [object Object]"}
+{"level":30,"time":"2025-04-02T16:55:32.971Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method newPage"}
+{"level":30,"time":"2025-04-02T16:55:33.034Z","pid":7180,"hostname":"familiaAR","msg":"Changed active context"}
+{"level":30,"time":"2025-04-02T16:55:33.301Z","pid":7180,"hostname":"familiaAR","msg":"Video path: undefined"}
+{"level":30,"time":"2025-04-02T16:55:33.303Z","pid":7180,"hostname":"familiaAR","msg":"Changed active page"}
+{"level":30,"time":"2025-04-02T16:55:34.283Z","pid":7180,"hostname":"familiaAR","msg":"End of node method newPage"}
+{"level":30,"time":"2025-04-02T16:55:34.300Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method fillText"}
+{"level":30,"time":"2025-04-02T16:55:34.301Z","pid":7180,"hostname":"familiaAR","msg":"Strict mode is enabled, find Locator with css=[name=user] in page."}
+{"level":30,"time":"2025-04-02T16:55:34.446Z","pid":7180,"hostname":"familiaAR","msg":"End of node method fillText"}
+{"level":30,"time":"2025-04-02T16:55:34.457Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method fillText"}
+{"level":30,"time":"2025-04-02T16:55:34.458Z","pid":7180,"hostname":"familiaAR","msg":"Strict mode is enabled, find Locator with css=[name=pass] in page."}
+{"level":30,"time":"2025-04-02T16:55:34.516Z","pid":7180,"hostname":"familiaAR","msg":"End of node method fillText"}
+{"level":30,"time":"2025-04-02T16:55:34.528Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method click"}
+{"level":30,"time":"2025-04-02T16:55:34.529Z","pid":7180,"hostname":"familiaAR","msg":"Strict mode is enabled, find Locator with css=button >> text=Entrar in page."}
+{"level":30,"time":"2025-04-02T16:55:34.641Z","pid":7180,"hostname":"familiaAR","msg":"End of node method click"}
+{"level":30,"time":"2025-04-02T16:55:34.660Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method waitForElementState"}
+{"level":30,"time":"2025-04-02T16:55:34.661Z","pid":7180,"hostname":"familiaAR","msg":"Strict mode is enabled, find Locator with css=div[role=status] in page."}
+{"level":30,"time":"2025-04-02T16:55:34.687Z","pid":7180,"hostname":"familiaAR","msg":"End of node method waitForElementState"}
+{"level":30,"time":"2025-04-02T16:55:34.702Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method getText"}
+{"level":30,"time":"2025-04-02T16:55:34.703Z","pid":7180,"hostname":"familiaAR","msg":"Strict mode is enabled, find Locator with css=div[role=status] in page."}
+{"level":30,"time":"2025-04-02T16:55:34.795Z","pid":7180,"hostname":"familiaAR","msg":"Retrieved text for element css=div[role=status] containing Oops! Credenciais inválidas :("}
+{"level":30,"time":"2025-04-02T16:55:34.795Z","pid":7180,"hostname":"familiaAR","msg":"End of node method getText"}
+{"level":30,"time":"2025-04-02T16:55:34.811Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method takeScreenshot"}
+{"level":30,"time":"2025-04-02T16:55:34.812Z","pid":7180,"hostname":"familiaAR","Take screenshot with options: ":{"path":"C:\\workspace\\QAx\\projects\\robot-actions\\resultados\\browser\\screenshot\\robotframework-browser-screenshot-1.png","fileType":"png","fullPage":false,"timeout":10000,"omitBackground":false}}
+{"level":30,"time":"2025-04-02T16:55:34.813Z","pid":7180,"hostname":"familiaAR","msg":"Strict mode is enabled, find Locator with div[role=status] in page."}
+{"level":30,"time":"2025-04-02T16:55:34.812Z","pid":7180,"hostname":"familiaAR","Using selecotr: ":"div[role=status]"}
+{"level":30,"time":"2025-04-02T16:55:35.219Z","pid":7180,"hostname":"familiaAR","msg":"End of node method takeScreenshot"}
+{"level":30,"time":"2025-04-02T16:55:35.238Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method takeScreenshot"}
+{"level":30,"time":"2025-04-02T16:55:35.239Z","pid":7180,"hostname":"familiaAR","Take screenshot with options: ":{"path":"C:\\workspace\\QAx\\projects\\robot-actions\\resultados\\browser\\screenshot\\robotframework-browser-screenshot-2.png","fileType":"png","fullPage":true,"timeout":10000,"omitBackground":false}}
+{"level":30,"time":"2025-04-02T16:55:35.673Z","pid":7180,"hostname":"familiaAR","msg":"End of node method takeScreenshot"}
+{"level":30,"time":"2025-04-02T16:55:35.694Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:35.703Z","pid":7180,"hostname":"familiaAR","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:35.713Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:35.719Z","pid":7180,"hostname":"familiaAR","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:35.727Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:35.731Z","pid":7180,"hostname":"familiaAR","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:35.745Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:35.750Z","pid":7180,"hostname":"familiaAR","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:35.759Z","pid":7180,"hostname":"familiaAR","msg":"Changed active context"}
+{"level":30,"time":"2025-04-02T16:55:35.760Z","pid":7180,"hostname":"familiaAR","msg":"Changing current active page: page=b099e0d1-2c8e-400c-867b-d83c6f8fa892"}
+{"level":30,"time":"2025-04-02T16:55:35.761Z","pid":7180,"hostname":"familiaAR","msg":"Changed active page"}
+{"level":30,"time":"2025-04-02T16:55:35.768Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method closeContext"}
+{"level":30,"time":"2025-04-02T16:55:35.792Z","pid":7180,"hostname":"familiaAR","msg":"Removed page=085210cd-5dd4-44f1-ab42-d3391bf60e80 from context=7b6f00c8-2063-489a-a228-9c3cc9a6fdaa page stack"}
+{"level":30,"time":"2025-04-02T16:55:35.798Z","pid":7180,"hostname":"familiaAR","msg":"End of node method closeContext"}
+{"level":30,"time":"2025-04-02T16:55:35.810Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:35.810Z","pid":7180,"hostname":"familiaAR","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:35.824Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method switchBrowser"}
+{"level":30,"time":"2025-04-02T16:55:35.826Z","pid":7180,"hostname":"familiaAR","msg":"End of node method switchBrowser"}
+{"level":30,"time":"2025-04-02T16:55:35.837Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method newPage"}
+{"level":30,"time":"2025-04-02T16:55:35.837Z","pid":7180,"hostname":"familiaAR","msg":"currentBrowser: [object Object]"}
+{"level":30,"time":"2025-04-02T16:55:35.854Z","pid":7180,"hostname":"familiaAR","msg":"Changed active context"}
+{"level":30,"time":"2025-04-02T16:55:36.021Z","pid":7180,"hostname":"familiaAR","msg":"Video path: undefined"}
+{"level":30,"time":"2025-04-02T16:55:36.021Z","pid":7180,"hostname":"familiaAR","msg":"Changed active page"}
+{"level":30,"time":"2025-04-02T16:55:36.916Z","pid":7180,"hostname":"familiaAR","msg":"End of node method newPage"}
+{"level":30,"time":"2025-04-02T16:55:36.930Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method fillText"}
+{"level":30,"time":"2025-04-02T16:55:36.930Z","pid":7180,"hostname":"familiaAR","msg":"Strict mode is enabled, find Locator with css=[name=user] in page."}
+{"level":30,"time":"2025-04-02T16:55:37.027Z","pid":7180,"hostname":"familiaAR","msg":"End of node method fillText"}
+{"level":30,"time":"2025-04-02T16:55:37.037Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method fillText"}
+{"level":30,"time":"2025-04-02T16:55:37.037Z","pid":7180,"hostname":"familiaAR","msg":"Strict mode is enabled, find Locator with css=[name=pass] in page."}
+{"level":30,"time":"2025-04-02T16:55:37.093Z","pid":7180,"hostname":"familiaAR","msg":"End of node method fillText"}
+{"level":30,"time":"2025-04-02T16:55:37.103Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method click"}
+{"level":30,"time":"2025-04-02T16:55:37.103Z","pid":7180,"hostname":"familiaAR","msg":"Strict mode is enabled, find Locator with css=button >> text=Entrar in page."}
+{"level":30,"time":"2025-04-02T16:55:37.201Z","pid":7180,"hostname":"familiaAR","msg":"End of node method click"}
+{"level":30,"time":"2025-04-02T16:55:37.223Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method waitForElementState"}
+{"level":30,"time":"2025-04-02T16:55:37.223Z","pid":7180,"hostname":"familiaAR","msg":"Strict mode is enabled, find Locator with css=div[role=status] in page."}
+{"level":30,"time":"2025-04-02T16:55:37.244Z","pid":7180,"hostname":"familiaAR","msg":"End of node method waitForElementState"}
+{"level":30,"time":"2025-04-02T16:55:37.257Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method getText"}
+{"level":30,"time":"2025-04-02T16:55:37.257Z","pid":7180,"hostname":"familiaAR","msg":"Strict mode is enabled, find Locator with css=div[role=status] in page."}
+{"level":30,"time":"2025-04-02T16:55:37.336Z","pid":7180,"hostname":"familiaAR","msg":"Retrieved text for element css=div[role=status] containing Oops! Credenciais inválidas :("}
+{"level":30,"time":"2025-04-02T16:55:37.336Z","pid":7180,"hostname":"familiaAR","msg":"End of node method getText"}
+{"level":30,"time":"2025-04-02T16:55:37.349Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method takeScreenshot"}
+{"level":30,"time":"2025-04-02T16:55:37.350Z","pid":7180,"hostname":"familiaAR","Take screenshot with options: ":{"path":"C:\\workspace\\QAx\\projects\\robot-actions\\resultados\\browser\\screenshot\\robotframework-browser-screenshot-3.png","fileType":"png","fullPage":false,"timeout":10000,"omitBackground":false}}
+{"level":30,"time":"2025-04-02T16:55:37.350Z","pid":7180,"hostname":"familiaAR","msg":"Strict mode is enabled, find Locator with div[role=status] in page."}
+{"level":30,"time":"2025-04-02T16:55:37.350Z","pid":7180,"hostname":"familiaAR","Using selecotr: ":"div[role=status]"}
+{"level":30,"time":"2025-04-02T16:55:37.709Z","pid":7180,"hostname":"familiaAR","msg":"End of node method takeScreenshot"}
+{"level":30,"time":"2025-04-02T16:55:37.726Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method takeScreenshot"}
+{"level":30,"time":"2025-04-02T16:55:37.727Z","pid":7180,"hostname":"familiaAR","Take screenshot with options: ":{"path":"C:\\workspace\\QAx\\projects\\robot-actions\\resultados\\browser\\screenshot\\robotframework-browser-screenshot-4.png","fileType":"png","fullPage":true,"timeout":10000,"omitBackground":false}}
+{"level":30,"time":"2025-04-02T16:55:38.170Z","pid":7180,"hostname":"familiaAR","msg":"End of node method takeScreenshot"}
+{"level":30,"time":"2025-04-02T16:55:38.189Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:38.195Z","pid":7180,"hostname":"familiaAR","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:38.203Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:38.208Z","pid":7180,"hostname":"familiaAR","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:38.215Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:38.219Z","pid":7180,"hostname":"familiaAR","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:38.233Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:38.237Z","pid":7180,"hostname":"familiaAR","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:38.245Z","pid":7180,"hostname":"familiaAR","msg":"Changed active context"}
+{"level":30,"time":"2025-04-02T16:55:38.245Z","pid":7180,"hostname":"familiaAR","msg":"Changing current active page: page=b562e091-6c93-4e90-a3ad-d9322bfe261c"}
+{"level":30,"time":"2025-04-02T16:55:38.245Z","pid":7180,"hostname":"familiaAR","msg":"Changed active page"}
+{"level":30,"time":"2025-04-02T16:55:38.251Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method closeContext"}
+{"level":30,"time":"2025-04-02T16:55:38.263Z","pid":7180,"hostname":"familiaAR","msg":"Removed page=83aac72f-754b-40c3-a21d-fcfd431417e1 from context=6cd67955-b883-4d3d-94e5-9c9781d8fb86 page stack"}
+{"level":30,"time":"2025-04-02T16:55:38.267Z","pid":7180,"hostname":"familiaAR","msg":"End of node method closeContext"}
+{"level":30,"time":"2025-04-02T16:55:38.279Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:38.280Z","pid":7180,"hostname":"familiaAR","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:38.294Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method switchBrowser"}
+{"level":30,"time":"2025-04-02T16:55:38.295Z","pid":7180,"hostname":"familiaAR","msg":"End of node method switchBrowser"}
+{"level":30,"time":"2025-04-02T16:55:38.305Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method newPage"}
+{"level":30,"time":"2025-04-02T16:55:38.306Z","pid":7180,"hostname":"familiaAR","msg":"currentBrowser: [object Object]"}
+{"level":30,"time":"2025-04-02T16:55:38.317Z","pid":7180,"hostname":"familiaAR","msg":"Changed active context"}
+{"level":30,"time":"2025-04-02T16:55:38.483Z","pid":7180,"hostname":"familiaAR","msg":"Video path: undefined"}
+{"level":30,"time":"2025-04-02T16:55:38.484Z","pid":7180,"hostname":"familiaAR","msg":"Changed active page"}
+{"level":30,"time":"2025-04-02T16:55:39.316Z","pid":7180,"hostname":"familiaAR","msg":"End of node method newPage"}
+{"level":30,"time":"2025-04-02T16:55:39.331Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method fillText"}
+{"level":30,"time":"2025-04-02T16:55:39.331Z","pid":7180,"hostname":"familiaAR","msg":"Strict mode is enabled, find Locator with css=[name=user] in page."}
+{"level":30,"time":"2025-04-02T16:55:39.433Z","pid":7180,"hostname":"familiaAR","msg":"End of node method fillText"}
+{"level":30,"time":"2025-04-02T16:55:39.442Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method fillText"}
+{"level":30,"time":"2025-04-02T16:55:39.442Z","pid":7180,"hostname":"familiaAR","msg":"Strict mode is enabled, find Locator with css=[name=pass] in page."}
+{"level":30,"time":"2025-04-02T16:55:39.537Z","pid":7180,"hostname":"familiaAR","msg":"End of node method fillText"}
+{"level":30,"time":"2025-04-02T16:55:39.549Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method click"}
+{"level":30,"time":"2025-04-02T16:55:39.549Z","pid":7180,"hostname":"familiaAR","msg":"Strict mode is enabled, find Locator with css=button >> text=Entrar in page."}
+{"level":30,"time":"2025-04-02T16:55:39.646Z","pid":7180,"hostname":"familiaAR","msg":"End of node method click"}
+{"level":30,"time":"2025-04-02T16:55:39.662Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method waitForElementState"}
+{"level":30,"time":"2025-04-02T16:55:39.663Z","pid":7180,"hostname":"familiaAR","msg":"Strict mode is enabled, find Locator with css=div[role=status] in page."}
+{"level":30,"time":"2025-04-02T16:55:39.675Z","pid":7180,"hostname":"familiaAR","msg":"End of node method waitForElementState"}
+{"level":30,"time":"2025-04-02T16:55:39.688Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method getText"}
+{"level":30,"time":"2025-04-02T16:55:39.689Z","pid":7180,"hostname":"familiaAR","msg":"Strict mode is enabled, find Locator with css=div[role=status] in page."}
+{"level":30,"time":"2025-04-02T16:55:39.762Z","pid":7180,"hostname":"familiaAR","msg":"Retrieved text for element css=div[role=status] containing Informe o seu nome de usuário!"}
+{"level":30,"time":"2025-04-02T16:55:39.762Z","pid":7180,"hostname":"familiaAR","msg":"End of node method getText"}
+{"level":30,"time":"2025-04-02T16:55:39.778Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method takeScreenshot"}
+{"level":30,"time":"2025-04-02T16:55:39.778Z","pid":7180,"hostname":"familiaAR","Take screenshot with options: ":{"path":"C:\\workspace\\QAx\\projects\\robot-actions\\resultados\\browser\\screenshot\\robotframework-browser-screenshot-5.png","fileType":"png","fullPage":false,"timeout":10000,"omitBackground":false}}
+{"level":30,"time":"2025-04-02T16:55:39.779Z","pid":7180,"hostname":"familiaAR","msg":"Strict mode is enabled, find Locator with div[role=status] in page."}
+{"level":30,"time":"2025-04-02T16:55:39.779Z","pid":7180,"hostname":"familiaAR","Using selecotr: ":"div[role=status]"}
+{"level":30,"time":"2025-04-02T16:55:40.141Z","pid":7180,"hostname":"familiaAR","msg":"End of node method takeScreenshot"}
+{"level":30,"time":"2025-04-02T16:55:40.160Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method takeScreenshot"}
+{"level":30,"time":"2025-04-02T16:55:40.161Z","pid":7180,"hostname":"familiaAR","Take screenshot with options: ":{"path":"C:\\workspace\\QAx\\projects\\robot-actions\\resultados\\browser\\screenshot\\robotframework-browser-screenshot-6.png","fileType":"png","fullPage":true,"timeout":10000,"omitBackground":false}}
+{"level":30,"time":"2025-04-02T16:55:40.620Z","pid":7180,"hostname":"familiaAR","msg":"End of node method takeScreenshot"}
+{"level":30,"time":"2025-04-02T16:55:40.649Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:40.655Z","pid":7180,"hostname":"familiaAR","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:40.668Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:40.679Z","pid":7180,"hostname":"familiaAR","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:40.694Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:40.701Z","pid":7180,"hostname":"familiaAR","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:40.717Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:40.721Z","pid":7180,"hostname":"familiaAR","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:40.731Z","pid":7180,"hostname":"familiaAR","msg":"Changed active context"}
+{"level":30,"time":"2025-04-02T16:55:40.731Z","pid":7180,"hostname":"familiaAR","msg":"Changing current active page: page=905e35c6-54a8-46e8-ae63-41452d80b101"}
+{"level":30,"time":"2025-04-02T16:55:40.731Z","pid":7180,"hostname":"familiaAR","msg":"Changed active page"}
+{"level":30,"time":"2025-04-02T16:55:40.737Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method closeContext"}
+{"level":30,"time":"2025-04-02T16:55:40.753Z","pid":7180,"hostname":"familiaAR","msg":"Removed page=71b5bc00-0986-4a50-b675-71ad31bd40f6 from context=1eeeadea-1c5b-4129-8d25-0815c5a7882b page stack"}
+{"level":30,"time":"2025-04-02T16:55:40.760Z","pid":7180,"hostname":"familiaAR","msg":"End of node method closeContext"}
+{"level":30,"time":"2025-04-02T16:55:40.775Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:40.775Z","pid":7180,"hostname":"familiaAR","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:40.797Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method switchBrowser"}
+{"level":30,"time":"2025-04-02T16:55:40.797Z","pid":7180,"hostname":"familiaAR","msg":"End of node method switchBrowser"}
+{"level":30,"time":"2025-04-02T16:55:40.813Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method newPage"}
+{"level":30,"time":"2025-04-02T16:55:40.813Z","pid":7180,"hostname":"familiaAR","msg":"currentBrowser: [object Object]"}
+{"level":30,"time":"2025-04-02T16:55:40.837Z","pid":7180,"hostname":"familiaAR","msg":"Changed active context"}
+{"level":30,"time":"2025-04-02T16:55:41.059Z","pid":7180,"hostname":"familiaAR","msg":"Video path: undefined"}
+{"level":30,"time":"2025-04-02T16:55:41.060Z","pid":7180,"hostname":"familiaAR","msg":"Changed active page"}
+{"level":30,"time":"2025-04-02T16:55:41.940Z","pid":7180,"hostname":"familiaAR","msg":"End of node method newPage"}
+{"level":30,"time":"2025-04-02T16:55:41.957Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method fillText"}
+{"level":30,"time":"2025-04-02T16:55:41.957Z","pid":7180,"hostname":"familiaAR","msg":"Strict mode is enabled, find Locator with css=[name=user] in page."}
+{"level":30,"time":"2025-04-02T16:55:42.064Z","pid":7180,"hostname":"familiaAR","msg":"End of node method fillText"}
+{"level":30,"time":"2025-04-02T16:55:42.073Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method fillText"}
+{"level":30,"time":"2025-04-02T16:55:42.073Z","pid":7180,"hostname":"familiaAR","msg":"Strict mode is enabled, find Locator with css=[name=pass] in page."}
+{"level":30,"time":"2025-04-02T16:55:42.144Z","pid":7180,"hostname":"familiaAR","msg":"End of node method fillText"}
+{"level":30,"time":"2025-04-02T16:55:42.155Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method click"}
+{"level":30,"time":"2025-04-02T16:55:42.156Z","pid":7180,"hostname":"familiaAR","msg":"Strict mode is enabled, find Locator with css=button >> text=Entrar in page."}
+{"level":30,"time":"2025-04-02T16:55:42.272Z","pid":7180,"hostname":"familiaAR","msg":"End of node method click"}
+{"level":30,"time":"2025-04-02T16:55:42.293Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method waitForElementState"}
+{"level":30,"time":"2025-04-02T16:55:42.293Z","pid":7180,"hostname":"familiaAR","msg":"Strict mode is enabled, find Locator with css=div[role=status] in page."}
+{"level":30,"time":"2025-04-02T16:55:42.330Z","pid":7180,"hostname":"familiaAR","msg":"End of node method waitForElementState"}
+{"level":30,"time":"2025-04-02T16:55:42.344Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method getText"}
+{"level":30,"time":"2025-04-02T16:55:42.344Z","pid":7180,"hostname":"familiaAR","msg":"Strict mode is enabled, find Locator with css=div[role=status] in page."}
+{"level":30,"time":"2025-04-02T16:55:42.449Z","pid":7180,"hostname":"familiaAR","msg":"Retrieved text for element css=div[role=status] containing Informe a sua senha secreta!"}
+{"level":30,"time":"2025-04-02T16:55:42.449Z","pid":7180,"hostname":"familiaAR","msg":"End of node method getText"}
+{"level":30,"time":"2025-04-02T16:55:42.465Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method takeScreenshot"}
+{"level":30,"time":"2025-04-02T16:55:42.466Z","pid":7180,"hostname":"familiaAR","Take screenshot with options: ":{"path":"C:\\workspace\\QAx\\projects\\robot-actions\\resultados\\browser\\screenshot\\robotframework-browser-screenshot-7.png","fileType":"png","fullPage":false,"timeout":10000,"omitBackground":false}}
+{"level":30,"time":"2025-04-02T16:55:42.466Z","pid":7180,"hostname":"familiaAR","msg":"Strict mode is enabled, find Locator with div[role=status] in page."}
+{"level":30,"time":"2025-04-02T16:55:42.466Z","pid":7180,"hostname":"familiaAR","Using selecotr: ":"div[role=status]"}
+{"level":30,"time":"2025-04-02T16:55:42.841Z","pid":7180,"hostname":"familiaAR","msg":"End of node method takeScreenshot"}
+{"level":30,"time":"2025-04-02T16:55:42.874Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method takeScreenshot"}
+{"level":30,"time":"2025-04-02T16:55:42.874Z","pid":7180,"hostname":"familiaAR","Take screenshot with options: ":{"path":"C:\\workspace\\QAx\\projects\\robot-actions\\resultados\\browser\\screenshot\\robotframework-browser-screenshot-8.png","fileType":"png","fullPage":true,"timeout":10000,"omitBackground":false}}
+{"level":30,"time":"2025-04-02T16:55:43.353Z","pid":7180,"hostname":"familiaAR","msg":"End of node method takeScreenshot"}
+{"level":30,"time":"2025-04-02T16:55:43.388Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:43.416Z","pid":7180,"hostname":"familiaAR","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:43.427Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:43.563Z","pid":7180,"hostname":"familiaAR","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:43.573Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:43.594Z","pid":7180,"hostname":"familiaAR","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:43.608Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:43.612Z","pid":7180,"hostname":"familiaAR","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:43.624Z","pid":7180,"hostname":"familiaAR","msg":"Changed active context"}
+{"level":30,"time":"2025-04-02T16:55:43.624Z","pid":7180,"hostname":"familiaAR","msg":"Changing current active page: page=4e60c9fc-8862-4df7-b5b0-346cdd74e9ac"}
+{"level":30,"time":"2025-04-02T16:55:43.624Z","pid":7180,"hostname":"familiaAR","msg":"Changed active page"}
+{"level":30,"time":"2025-04-02T16:55:43.658Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method closeContext"}
+{"level":30,"time":"2025-04-02T16:55:43.689Z","pid":7180,"hostname":"familiaAR","msg":"Removed page=76eac742-4e18-4fd2-84e6-0d838a6eb78c from context=ecddec0a-ba54-47c9-ba79-dceb04f0d7ca page stack"}
+{"level":30,"time":"2025-04-02T16:55:43.695Z","pid":7180,"hostname":"familiaAR","msg":"End of node method closeContext"}
+{"level":30,"time":"2025-04-02T16:55:43.751Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:43.751Z","pid":7180,"hostname":"familiaAR","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:43.771Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method switchBrowser"}
+{"level":30,"time":"2025-04-02T16:55:43.772Z","pid":7180,"hostname":"familiaAR","msg":"End of node method switchBrowser"}
+{"level":30,"time":"2025-04-02T16:55:43.787Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method newPage"}
+{"level":30,"time":"2025-04-02T16:55:43.787Z","pid":7180,"hostname":"familiaAR","msg":"currentBrowser: [object Object]"}
+{"level":30,"time":"2025-04-02T16:55:43.824Z","pid":7180,"hostname":"familiaAR","msg":"Changed active context"}
+{"level":30,"time":"2025-04-02T16:55:44.060Z","pid":7180,"hostname":"familiaAR","msg":"Video path: undefined"}
+{"level":30,"time":"2025-04-02T16:55:44.061Z","pid":7180,"hostname":"familiaAR","msg":"Changed active page"}
+{"level":30,"time":"2025-04-02T16:55:45.517Z","pid":7180,"hostname":"familiaAR","msg":"End of node method newPage"}
+{"level":30,"time":"2025-04-02T16:55:45.542Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method fillText"}
+{"level":30,"time":"2025-04-02T16:55:45.542Z","pid":7180,"hostname":"familiaAR","msg":"Strict mode is enabled, find Locator with css=[name=user] in page."}
+{"level":30,"time":"2025-04-02T16:55:46.469Z","pid":7180,"hostname":"familiaAR","msg":"End of node method fillText"}
+{"level":30,"time":"2025-04-02T16:55:46.485Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method fillText"}
+{"level":30,"time":"2025-04-02T16:55:46.486Z","pid":7180,"hostname":"familiaAR","msg":"Strict mode is enabled, find Locator with css=[name=pass] in page."}
+{"level":30,"time":"2025-04-02T16:55:46.764Z","pid":7180,"hostname":"familiaAR","msg":"End of node method fillText"}
+{"level":30,"time":"2025-04-02T16:55:46.776Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method click"}
+{"level":30,"time":"2025-04-02T16:55:46.776Z","pid":7180,"hostname":"familiaAR","msg":"Strict mode is enabled, find Locator with css=button >> text=Entrar in page."}
+{"level":30,"time":"2025-04-02T16:55:47.444Z","pid":7180,"hostname":"familiaAR","msg":"End of node method click"}
+{"level":30,"time":"2025-04-02T16:55:47.509Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method waitForElementState"}
+{"level":30,"time":"2025-04-02T16:55:47.510Z","pid":7180,"hostname":"familiaAR","msg":"Strict mode is enabled, find Locator with css=#swal2-title in page."}
+{"level":30,"time":"2025-04-02T16:55:47.643Z","pid":7180,"hostname":"familiaAR","msg":"End of node method waitForElementState"}
+{"level":30,"time":"2025-04-02T16:55:47.660Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method getText"}
+{"level":30,"time":"2025-04-02T16:55:47.661Z","pid":7180,"hostname":"familiaAR","msg":"Strict mode is enabled, find Locator with css=#swal2-title in page."}
+{"level":30,"time":"2025-04-02T16:55:47.769Z","pid":7180,"hostname":"familiaAR","msg":"Retrieved text for element css=#swal2-title containing Tudo certo!"}
+{"level":30,"time":"2025-04-02T16:55:47.769Z","pid":7180,"hostname":"familiaAR","msg":"End of node method getText"}
+{"level":30,"time":"2025-04-02T16:55:47.800Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method takeScreenshot"}
+{"level":30,"time":"2025-04-02T16:55:47.800Z","pid":7180,"hostname":"familiaAR","Take screenshot with options: ":{"path":"C:\\workspace\\QAx\\projects\\robot-actions\\resultados\\browser\\screenshot\\robotframework-browser-screenshot-9.png","fileType":"png","fullPage":true,"timeout":10000,"omitBackground":false}}
+{"level":30,"time":"2025-04-02T16:55:48.322Z","pid":7180,"hostname":"familiaAR","msg":"End of node method takeScreenshot"}
+{"level":30,"time":"2025-04-02T16:55:48.372Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:48.382Z","pid":7180,"hostname":"familiaAR","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:48.393Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:48.401Z","pid":7180,"hostname":"familiaAR","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:48.411Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:48.417Z","pid":7180,"hostname":"familiaAR","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:48.432Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:48.438Z","pid":7180,"hostname":"familiaAR","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:48.447Z","pid":7180,"hostname":"familiaAR","msg":"Changed active context"}
+{"level":30,"time":"2025-04-02T16:55:48.448Z","pid":7180,"hostname":"familiaAR","msg":"Changing current active page: page=dfd867ec-37b7-4a27-a7fd-082caa96b340"}
+{"level":30,"time":"2025-04-02T16:55:48.448Z","pid":7180,"hostname":"familiaAR","msg":"Changed active page"}
+{"level":30,"time":"2025-04-02T16:55:48.457Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method closeContext"}
+{"level":30,"time":"2025-04-02T16:55:48.477Z","pid":7180,"hostname":"familiaAR","msg":"Removed page=24ccd265-3411-48d4-8b05-0241ae895f17 from context=7ea5f012-0d80-4e10-9519-231683337cca page stack"}
+{"level":30,"time":"2025-04-02T16:55:48.480Z","pid":7180,"hostname":"familiaAR","msg":"End of node method closeContext"}
+{"level":30,"time":"2025-04-02T16:55:48.546Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:48.547Z","pid":7180,"hostname":"familiaAR","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2025-04-02T16:55:49.416Z","pid":7180,"hostname":"familiaAR","msg":"Start of node method closeAllBrowsers"}
+{"level":30,"time":"2025-04-02T16:55:50.401Z","pid":7180,"hostname":"familiaAR","msg":"End of node method closeAllBrowsers"}
