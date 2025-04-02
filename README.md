@@ -2,7 +2,7 @@
 
 ## Sobre
 
-Repositório do treinamento: Testes contínuos em Robot Framework no Github Actions
+Repositório do treinamento: [Testes contínuos em Robot Framework no Github Actions](https://www.udemy.com/course/testes-continuos-em-robot-framework-no-github-actions/)
 
 ## Techs
 - Robot Framework
@@ -27,5 +27,4 @@ robot -d ./logs -v IS_HEADLESS:False tests
 ```
 
 <hr>
-Curso disponível em https://qax.com.br
-
+Curso disponível em https://www.udemy.com/course/testes-continuos-em-robot-framework-no-github-actions/ 
