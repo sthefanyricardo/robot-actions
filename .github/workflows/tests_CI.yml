@@ -42,7 +42,7 @@ jobs:
       run: robot -d ./tests-results-CI -v BROWSER:${{ matrix.browser }} tests
 
     - name: Robot Reporter
-      uses: joonvena/robotframework-reporter-action@v2.4
+      uses: joonvena/robotframework-reporter-action@v2.5
       with:
         gh_access_token: ${{ secrets.GITHUB_TOKEN }}
         report_path: tests-results-CI
