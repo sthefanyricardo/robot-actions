@@ -97,11 +97,12 @@ Este projeto foi desenvolvido com as seguintes ferramentas e tecnologias. Certif
 
 <details>
 <summary>Clique aqui para expandir as informações</summary>
-  
-  - [**Robot Framework**]() → Framework de automação de testes e RPA.
-  - [**Python**]() → Linguagem de programação utilizada como base para o Robot Framework.
-  - [**Browser Library (Playwright)**]() → Biblioteca para automação de testes web.
-  - [**GitHub Actions**]() → Plataforma de CI/CD para automatizar fluxos de trabalho.
+
+  - [**Python**](https://www.python.org/downloads/) → Linguagem de programação utilizada como base para o Robot Framework.
+  - [**Robot Framework**](https://robotframework.org/) → Framework de automação de testes e RPA.
+  - [**Node.js**](https://nodejs.org/en/download/) → Dependência necessária para utilização da biblioteca [**Browser Library (Playwright)**](https://robotframework-browser.org/).
+  - [**Browser Library (Playwright)**](https://marketsquare.github.io/robotframework-browser/Browser.html) → Biblioteca para automação de testes web.
+  - [**GitHub Actions**](https://github.com/features/actions?locale=pt-BR) → Plataforma de CI/CD para automatizar fluxos de trabalho.
 
 </details>
 
@@ -110,9 +111,10 @@ Este projeto foi desenvolvido com as seguintes ferramentas e tecnologias. Certif
 <details>
 <summary>Clique aqui para expandir as informações</summary>
 
-  - [**Visual Studio Code**]() → IDE utilizada para desenvolvimento e manutenção dos testes.
-  - [**Git**]() → Controle de versão.
-  - [**GitHub**]() → Repositório remoto para versionamento e compartilhamento do código.
+  - [**Visual Studio Code**](https://code.visualstudio.com/download) → IDE utilizada para desenvolvimento e manutenção dos testes.
+  - [**Git**](https://git-scm.com/downloads) → Controle de versão.
+  - [**GitHub**](https://github.com/) → Repositório remoto para versionamento e compartilhamento do código.
+  - [Windows Terminal](https://apps.microsoft.com/detail/9n0dx20hk701?hl=pt-BR&gl=BR) e Prompt de Comando→ São as ferramentas de linha de comando (CLI) padrão no Windows.
 
 </details>
 
@@ -133,3 +135,4 @@ Este projeto foi desenvolvido com as seguintes ferramentas e tecnologias. Certif
 Feito com ❤️ por **Sthefany A. Ricardo**.
 
 - Este `README.md` foi gerado com a assistência de modelos de linguagem como o Google Gemini e o ChatGPT, para garantir clareza, formatação e um conteúdo completo.
+
