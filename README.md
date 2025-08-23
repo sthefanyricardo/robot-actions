@@ -4,6 +4,7 @@
 ---
 
 # Automação com Robot Framework e GitHub Actions
+
 Este repositório contém o projeto desenvolvido durante o curso [**Testes contínuos em Robot Framework no Github Actions**](https://www.udemy.com/course/testes-continuos-em-robot-framework-no-github-actions/), ministrado por Fernando Papito na plataforma Udemy.
 
 O objetivo é demonstrar a integração de testes automatizados com Robot Framework em um pipeline de CI/CD utilizando o GitHub Actions, incluindo relatórios, métricas e evidências visuais.
@@ -21,6 +22,7 @@ Com este setup, é possível garantir que os testes de regressão sejam executad
   - 📊 Gere relatórios, screenshots e métricas para evidenciar a execução dos testes.
 
   ## 📑 Conteúdo do Curso
+  
   Durante este treinamento, você aprenderá a construir e otimizar um fluxo de trabalho de testes contínuos no GitHub Actions, criando um histórico robusto de testes de regressão, acompanhado de relatórios detalhados e evidências visuais essenciais.
   
   O curso aborda os seguintes conceitos:
@@ -34,19 +36,26 @@ Com este setup, é possível garantir que os testes de regressão sejam executad
 ---
 
 ## 📊 Relatórios e Métricas
+
 A execução dos testes com Robot Framework gera relatórios completos e evidências que podem ser acompanhados para garantir a rastreabilidade, análise detalhada e colaboração da equipe.
 
 - Relatórios Nativos do Robot Framework:
   - report.html: Um resumo executivo da execução de testes.
   - log.html: O log detalhado da execução, incluindo todos os passos e evidências.
-- Evidências Visuais: Captura automática de screenshots na pasta resultados/browser/screenshot em caso de falhas.
 
+- Relatórios Automatizados no GitHub:
+  - Uma ação de relatório de terceiros (robotframework-reporter-action) é usada para postar um resumo dos resultados de teste diretamente em cada commit e pull request.
+
+- Evidências Visuais:
+  - Captura automática de screenshots na pasta resultados/browser/screenshot em caso de falhas.
+  
 ---
 
 ## ⚙️ Fluxo de Testes com GitHub Actions
-Os fluxos de trabalho (workflows) estão configurados no diretório .github/workflows/. Cada arquivo YAML define um pipeline de CI/CD que pode ser ativado manualmente.
 
-- ```tests_CI.yml:``` Este workflow foi desenhado para execução completa dos testes. Ele configura o ambiente, instala as dependências do Python e executa a suíte de testes em um único pipeline. Ele é ideal para uma verificação de integração contínua e para gerar os relatórios.
+Os fluxos de trabalho (workflows) estão configurados no diretório ```.github/workflows/```. Cada arquivo YAML define um pipeline de CI/CD que é ativado automaticamente em eventos de ```push``` e ```pull request``` na branch ```main```, além de poder ser executado manualmente.
+
+- ```tests_CI.yml:``` Este workflow foi desenhado para a integração contínua (CI). Ele executa a suíte de testes de ponta a ponta em múltiplos navegadores (chromium e firefox) usando uma matriz e gera relatórios que são visíveis no próprio GitHub.
 
 ---
 
@@ -58,23 +67,23 @@ O projeto segue a estrutura padrão do Robot Framework e inclui arquivos de conf
 <summary>Clique aqui para expandir a estrutura de arquivos</summary>
 
   ```text
-  📦 robot-actions/
-  ┣ 📂 .github/
-  ┃ └── workflows/
-  ┃     └── 📜 tests_CI.yml       # Workflow para execução de testes no GitHub Actions
-  ┣ 📂 resources/
-  ┃ ├── 📜 actions.resource       # Palavras-chave de ações e interações
-  ┃ └── 📜 base.resource          # Palavras-chave de configuração e utilidades
-  ┣ 📂 resultados/
-  ┃ ├── 📂 browser/screenshot     # Screenshots de falhas
-  ┃ ├── 📜 log.html               # Log detalhado da execução
-  ┃ ├── 📜 output.xml             # Saída em XML para relatórios
-  ┃ └── 📜 report.html            # Resumo da execução
-  ┣ 📂 tests/
-  ┃ └── 📜 login.robot            # Arquivos de casos de teste
-  ┣ 📜 .gitignore                 # Arquivos e pastas a serem ignorados pelo Git
-  ┣ 📜 README.md                  # Documentação principal do repositório
-  ┗ 📜 requirements.txt           # Dependências do Python
+    📦 robot-actions/
+    ┣ 📂 .github/
+    ┃ └── workflows/
+    ┃     └── 📜 tests_CI.yml       # Workflow para execução de testes no GitHub Actions
+    ┣ 📂 resources/
+    ┃ ├── 📜 actions.resource       # Palavras-chave de ações e interações
+    ┃ └── 📜 base.resource          # Palavras-chave de configuração e utilidades
+    ┣ 📂 resultados/
+    ┃ ├── 📂 browser/screenshot     # Screenshots de falhas
+    ┃ ├── 📜 log.html               # Log detalhado da execução
+    ┃ ├── 📜 output.xml             # Saída em XML para relatórios
+    ┃ └── 📜 report.html            # Resumo da execução
+    ┣ 📂 tests/
+    ┃ └── 📜 login.robot            # Arquivos de casos de teste
+    ┣ 📜 .gitignore                 # Arquivos e pastas a serem ignorados pelo Git
+    ┣ 📜 README.md                  # Documentação principal do repositório
+    ┗ 📜 requirements.txt           # Dependências do Python
   ```
 
 </details>
@@ -120,5 +129,5 @@ Este projeto foi desenvolvido com as seguintes ferramentas e tecnologias. Certif
 --- 
 
 ## 🙋‍♀️ Autora
-Feito com ❤️ por Sthefany A. Ricardo.
 
+Feito com ❤️ por Sthefany A. Ricardo.
