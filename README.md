@@ -59,7 +59,7 @@ Os fluxos de trabalho (workflows) estão configurados no diretório ```.github/w
 
 ---
 
-📁 Estrutura do Repositório
+## 📁 Estrutura do Repositório
 
 O projeto segue a estrutura padrão do Robot Framework e inclui arquivos de configuração para a integração contínua.
 
@@ -98,10 +98,10 @@ Este projeto foi desenvolvido com as seguintes ferramentas e tecnologias. Certif
 <details>
 <summary>Clique aqui para expandir as informações</summary>
   
-  - Robot Framework → Framework de automação de testes e RPA.
-  - Python → Linguagem de programação utilizada como base para o Robot Framework.
-  - Browser Library (Playwright) → Biblioteca para automação de testes web.
-  - GitHub Actions → Plataforma de CI/CD para automatizar fluxos de trabalho.
+  - [**Robot Framework**]() → Framework de automação de testes e RPA.
+  - [**Python**]() → Linguagem de programação utilizada como base para o Robot Framework.
+  - [**Browser Library (Playwright)**]() → Biblioteca para automação de testes web.
+  - [**GitHub Actions**]() → Plataforma de CI/CD para automatizar fluxos de trabalho.
 
 </details>
 
@@ -110,9 +110,9 @@ Este projeto foi desenvolvido com as seguintes ferramentas e tecnologias. Certif
 <details>
 <summary>Clique aqui para expandir as informações</summary>
 
-  - Visual Studio Code → IDE utilizada para desenvolvimento e manutenção dos testes.
-  - Git → Controle de versão.
-  - GitHub → Repositório remoto para versionamento e compartilhamento do código.
+  - [**Visual Studio Code**]() → IDE utilizada para desenvolvimento e manutenção dos testes.
+  - [**Git**]() → Controle de versão.
+  - [**GitHub**]() → Repositório remoto para versionamento e compartilhamento do código.
 
 </details>
 
@@ -130,4 +130,6 @@ Este projeto foi desenvolvido com as seguintes ferramentas e tecnologias. Certif
 
 ## 🙋‍♀️ Autora
 
-Feito com ❤️ por Sthefany A. Ricardo.
+Feito com ❤️ por **Sthefany A. Ricardo**.
+
+- Este `README.md` foi gerado com a assistência de modelos de linguagem como o Google Gemini e o ChatGPT, para garantir clareza, formatação e um conteúdo completo.
