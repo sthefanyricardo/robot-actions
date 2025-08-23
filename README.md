@@ -100,7 +100,7 @@ Este projeto foi desenvolvido com as seguintes ferramentas e tecnologias. Certif
   
   - Robot Framework → Framework de automação de testes e RPA.
   - Python → Linguagem de programação utilizada como base para o Robot Framework.
-  - Selenium Library → Biblioteca para automação de testes web.
+  - Browser Library (Playwright) → Biblioteca para automação de testes web.
   - GitHub Actions → Plataforma de CI/CD para automatizar fluxos de trabalho.
 
 </details>
