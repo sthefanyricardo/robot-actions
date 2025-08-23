@@ -33,6 +33,82 @@ Com este setup, é possível garantir que os testes de regressão sejam executad
 
 ---
 
+## 📊 Relatórios e Métricas
+A execução dos testes com Robot Framework gera relatórios completos e evidências que podem ser acompanhados para garantir a rastreabilidade, análise detalhada e colaboração da equipe.
+
+- Relatórios Nativos do Robot Framework:
+  - report.html: Um resumo executivo da execução de testes.
+  - log.html: O log detalhado da execução, incluindo todos os passos e evidências.
+- Evidências Visuais: Captura automática de screenshots na pasta resultados/browser/screenshot em caso de falhas.
+
+---
+
+## ⚙️ Fluxo de Testes com GitHub Actions
+Os fluxos de trabalho (workflows) estão configurados no diretório .github/workflows/. Cada arquivo YAML define um pipeline de CI/CD que pode ser ativado manualmente.
+
+- ```tests_CI.yml:``` Este workflow foi desenhado para execução completa dos testes. Ele configura o ambiente, instala as dependências do Python e executa a suíte de testes em um único pipeline. Ele é ideal para uma verificação de integração contínua e para gerar os relatórios.
+
+---
+
+📁 Estrutura do Repositório
+
+O projeto segue a estrutura padrão do Robot Framework e inclui arquivos de configuração para a integração contínua.
+
+<details>
+<summary>Clique aqui para expandir a estrutura de arquivos</summary>
+
+  ```text
+  📦 robot-actions/
+  ┣ 📂 .github/
+  ┃ └── workflows/
+  ┃     └── 📜 tests_CI.yml       # Workflow para execução de testes no GitHub Actions
+  ┣ 📂 resources/
+  ┃ ├── 📜 actions.resource       # Palavras-chave de ações e interações
+  ┃ └── 📜 base.resource          # Palavras-chave de configuração e utilidades
+  ┣ 📂 resultados/
+  ┃ ├── 📂 browser/screenshot     # Screenshots de falhas
+  ┃ ├── 📜 log.html               # Log detalhado da execução
+  ┃ ├── 📜 output.xml             # Saída em XML para relatórios
+  ┃ └── 📜 report.html            # Resumo da execução
+  ┣ 📂 tests/
+  ┃ └── 📜 login.robot            # Arquivos de casos de teste
+  ┣ 📜 .gitignore                 # Arquivos e pastas a serem ignorados pelo Git
+  ┣ 📜 README.md                  # Documentação principal do repositório
+  ┗ 📜 requirements.txt           # Dependências do Python
+  ```
+
+</details>
+
+---
+
+## 🛠️ Tecnologias, Ferramentas e Requisitos
+Este projeto foi desenvolvido com as seguintes ferramentas e tecnologias. Certifique-se de que sua máquina atende aos requisitos abaixo para executar os testes.
+
+### Linguagem e Frameworks
+
+<details>
+<summary>Clique aqui para expandir as informações</summary>
+  
+  - Robot Framework → Framework de automação de testes e RPA.
+  - Python → Linguagem de programação utilizada como base para o Robot Framework.
+  - Selenium Library → Biblioteca para automação de testes web.
+  - GitHub Actions → Plataforma de CI/CD para automatizar fluxos de trabalho.
+
+</details>
+
+### Ferramentas de Desenvolvimento
+
+<details>
+<summary>Clique aqui para expandir as informações</summary>
+
+  - Visual Studio Code → IDE utilizada para desenvolvimento e manutenção dos testes.
+  - Git → Controle de versão.
+  - GitHub → Repositório remoto para versionamento e compartilhamento do código.
+
+</details>
+
+---
+
 ## 📌 Agradecimentos
 
 - Ao instrutor Fernando Papito pelo curso e compartilhamento de conhecimento.
@@ -45,3 +121,4 @@ Com este setup, é possível garantir que os testes de regressão sejam executad
 
 ## 🙋‍♀️ Autora
 Feito com ❤️ por Sthefany A. Ricardo.
+
