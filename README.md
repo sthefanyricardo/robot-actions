@@ -114,7 +114,7 @@ Este projeto foi desenvolvido com as seguintes ferramentas e tecnologias. Certif
   - [**Visual Studio Code**](https://code.visualstudio.com/download) → IDE utilizada para desenvolvimento e manutenção dos testes.
   - [**Git**](https://git-scm.com/downloads) → Controle de versão.
   - [**GitHub**](https://github.com/) → Repositório remoto para versionamento e compartilhamento do código.
-  - [**Windows Terminal**](https://apps.microsoft.com/detail/9n0dx20hk701?hl=pt-BR&gl=BR) e Prompt de Comando→ São as ferramentas de linha de comando (CLI) padrão no Windows.
+  - [**Windows Terminal**](https://apps.microsoft.com/detail/9n0dx20hk701?hl=pt-BR&gl=BR) e **Prompt de Comando** → São as ferramentas de linha de comando (CLI) padrão no Windows.
 
 </details>
 
@@ -135,6 +135,3 @@ Este projeto foi desenvolvido com as seguintes ferramentas e tecnologias. Certif
 Feito com ❤️ por **Sthefany A. Ricardo**.
 
 - Este `README.md` foi gerado com a assistência de modelos de linguagem como o Google Gemini e o ChatGPT, para garantir clareza, formatação e um conteúdo completo.
-
-
-
