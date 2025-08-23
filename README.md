@@ -44,7 +44,7 @@ A execução dos testes com Robot Framework gera relatórios completos e evidên
   - log.html: O log detalhado da execução, incluindo todos os passos e evidências.
 
 - Relatórios Automatizados no GitHub:
-  - Uma ação de relatório de terceiros (robotframework-reporter-action) é usada para postar um resumo dos resultados de teste diretamente em cada commit e pull request.
+  - Uma ação de relatório de terceiros [**robotframework-reporter-action**](https://github.com/joonvena/robotframework-reporter-action), é usada para postar um resumo dos resultados de teste diretamente em cada commit e pull request.
 
 - Evidências Visuais:
   - Captura automática de screenshots na pasta resultados/browser/screenshot em caso de falhas.
@@ -135,5 +135,6 @@ Este projeto foi desenvolvido com as seguintes ferramentas e tecnologias. Certif
 Feito com ❤️ por **Sthefany A. Ricardo**.
 
 - Este `README.md` foi gerado com a assistência de modelos de linguagem como o Google Gemini e o ChatGPT, para garantir clareza, formatação e um conteúdo completo.
+
 
 
