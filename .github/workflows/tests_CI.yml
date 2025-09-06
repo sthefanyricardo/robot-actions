@@ -47,14 +47,6 @@ jobs:
     strategy:
       matrix:
         browser: [chromium, firefox, webkit]
-        # Executa apenas o navegador selecionado se especificado
-        exclude:
-          - browser: chromium
-            when: ${{ github.event.inputs.browser != 'all' && github.event.inputs.browser != 'chromium' && github.event.inputs.browser != '' }}
-          - browser: firefox
-            when: ${{ github.event.inputs.browser != 'all' && github.event.inputs.browser != 'firefox' && github.event.inputs.browser != '' }}
-          - browser: webkit
-            when: ${{ github.event.inputs.browser != 'all' && github.event.inputs.browser != 'webkit' && github.event.inputs.browser != '' }}
     runs-on: ubuntu-latest
     timeout-minutes: 30
 
@@ -97,6 +89,7 @@ jobs:
       run: mkdir -p ./tests-results-CI/${{ matrix.browser }}
 
     - name: Run E2E Tests
+      if: ${{ github.event.inputs.browser == 'all' || github.event.inputs.browser == '' || github.event.inputs.browser == matrix.browser }}
       run: |
         robot \
           --outputdir ./tests-results-CI/${{ matrix.browser }} \
@@ -109,7 +102,7 @@ jobs:
       continue-on-error: true
 
     - name: Generate HTML Report
-      if: always()
+      if: always() && (github.event.inputs.browser == 'all' || github.event.inputs.browser == '' || github.event.inputs.browser == matrix.browser)
       run: |
         python -m robotframework_htmlreport \
           ./tests-results-CI/${{ matrix.browser }}/output.xml \
@@ -117,7 +110,7 @@ jobs:
 
     - name: Upload Test Results
       uses: actions/upload-artifact@v4
-      if: always()
+      if: always() && (github.event.inputs.browser == 'all' || github.event.inputs.browser == '' || github.event.inputs.browser == matrix.browser)
       with:
         name: test-results-${{ matrix.browser }}
         path: tests-results-CI/${{ matrix.browser }}/
@@ -125,7 +118,7 @@ jobs:
 
     - name: Robot Framework Reporter
       uses: joonvena/robotframework-reporter-action@v2.5
-      if: always()
+      if: always() && (github.event.inputs.browser == 'all' || github.event.inputs.browser == '' || github.event.inputs.browser == matrix.browser)
       with:
         gh_access_token: ${{ secrets.GITHUB_TOKEN }}
         report_path: tests-results-CI/${{ matrix.browser }}
