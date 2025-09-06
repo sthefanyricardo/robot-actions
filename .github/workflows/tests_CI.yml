@@ -89,15 +89,15 @@ jobs:
           tests/
       continue-on-error: true
 
-    - name: Generate HTML Report
+    - name: Check Test Results
       if: always()
       run: |
+        echo "📊 Verificando resultados dos testes..."
         if [ -f "./tests-results-CI/${{ matrix.browser }}/output.xml" ]; then
-          python -m robotframework_htmlreport \
-            ./tests-results-CI/${{ matrix.browser }}/output.xml \
-            ./tests-results-CI/${{ matrix.browser }}/report.html
+          echo "✅ Arquivo output.xml encontrado!"
+          ls -la "./tests-results-CI/${{ matrix.browser }}/"
         else
-          echo "⚠️ Arquivo output.xml não encontrado. Pulando geração de relatório HTML."
+          echo "⚠️ Arquivo output.xml não encontrado."
         fi
 
     - name: Upload Test Results
