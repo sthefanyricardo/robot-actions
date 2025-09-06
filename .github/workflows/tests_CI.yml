@@ -78,7 +78,6 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-        pip install robotframework-htmlreport
 
     - name: Initialize Browser
       run: rfbrowser init
@@ -89,8 +88,12 @@ jobs:
       run: mkdir -p ./tests-results-CI/${{ matrix.browser }}
 
     - name: Run E2E Tests
-      if: ${{ github.event.inputs.browser == 'all' || github.event.inputs.browser == '' || github.event.inputs.browser == matrix.browser }}
       run: |
+        echo "🚀 Executando testes para o navegador: ${{ matrix.browser }}"
+        echo "📁 Diretório de trabalho: $(pwd)"
+        echo "📂 Conteúdo do diretório tests:"
+        ls -la tests/ || echo "Diretório tests não encontrado"
+        
         robot \
           --outputdir ./tests-results-CI/${{ matrix.browser }} \
           --variable BROWSER:${{ matrix.browser }} \
@@ -102,15 +105,19 @@ jobs:
       continue-on-error: true
 
     - name: Generate HTML Report
-      if: always() && (github.event.inputs.browser == 'all' || github.event.inputs.browser == '' || github.event.inputs.browser == matrix.browser)
+      if: always()
       run: |
-        python -m robotframework_htmlreport \
-          ./tests-results-CI/${{ matrix.browser }}/output.xml \
-          ./tests-results-CI/${{ matrix.browser }}/report.html
+        if [ -f "./tests-results-CI/${{ matrix.browser }}/output.xml" ]; then
+          python -m robotframework_htmlreport \
+            ./tests-results-CI/${{ matrix.browser }}/output.xml \
+            ./tests-results-CI/${{ matrix.browser }}/report.html
+        else
+          echo "⚠️ Arquivo output.xml não encontrado. Pulando geração de relatório HTML."
+        fi
 
     - name: Upload Test Results
       uses: actions/upload-artifact@v4
-      if: always() && (github.event.inputs.browser == 'all' || github.event.inputs.browser == '' || github.event.inputs.browser == matrix.browser)
+      if: always()
       with:
         name: test-results-${{ matrix.browser }}
         path: tests-results-CI/${{ matrix.browser }}/
@@ -118,11 +125,10 @@ jobs:
 
     - name: Robot Framework Reporter
       uses: joonvena/robotframework-reporter-action@v2.5
-      if: always() && (github.event.inputs.browser == 'all' || github.event.inputs.browser == '' || github.event.inputs.browser == matrix.browser)
+      if: always()
       with:
         gh_access_token: ${{ secrets.GITHUB_TOKEN }}
         report_path: tests-results-CI/${{ matrix.browser }}
-        report_title: "Test Results - ${{ matrix.browser }}"
 
   # Job para consolidar resultados e publicar no GitHub Pages
   publish-results:
