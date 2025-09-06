@@ -24,26 +24,7 @@ env:
   NODE_VERSION: '22'
 
 jobs:
-  # Job para cache de dependências
-  cache-deps:
-    runs-on: ubuntu-latest
-    outputs:
-      cache-hit: ${{ steps.cache-python.outputs.cache-hit }}
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-
-    - name: Cache Python dependencies
-      id: cache-python
-      uses: actions/cache@v4
-      with:
-        path: ~/.cache/pip
-        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-        restore-keys: |
-          ${{ runner.os }}-pip-
-
   tests:
-    needs: cache-deps
     strategy:
       matrix:
         browser: [chromium, firefox, webkit]
@@ -67,7 +48,6 @@ jobs:
 
     - name: Cache pip dependencies
       uses: actions/cache@v4
-      if: needs.cache-deps.outputs.cache-hit != 'true'
       with:
         path: ~/.cache/pip
         key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
@@ -76,11 +56,17 @@ jobs:
 
     - name: Install Python dependencies
       run: |
+        echo "🐍 Instalando dependências Python..."
         python -m pip install --upgrade pip
+        echo "📦 Instalando pacotes do requirements.txt..."
         pip install -r requirements.txt
+        echo "✅ Dependências instaladas com sucesso!"
 
     - name: Initialize Browser
-      run: rfbrowser init
+      run: |
+        echo "🌐 Inicializando browser: ${{ matrix.browser }}"
+        rfbrowser init
+        echo "✅ Browser inicializado com sucesso!"
       env:
         BROWSER: ${{ matrix.browser }}
 
