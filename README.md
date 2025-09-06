@@ -53,9 +53,96 @@ A execução dos testes com Robot Framework gera relatórios completos e evidên
 
 ## ⚙️ Fluxo de Testes com GitHub Actions
 
-Os fluxos de trabalho (workflows) estão configurados no diretório ```.github/workflows/```. Cada arquivo YAML define um pipeline de CI/CD que é ativado automaticamente em eventos de ```push``` e ```pull request``` na branch ```main```, além de poder ser executado manualmente.
+Os fluxos de trabalho (workflows) estão configurados no diretório ```.github/workflows/```. Cada arquivo YAML define um pipeline de CI/CD que é ativado automaticamente em eventos de ```push``` e ```pull request``` nas branches ```main``` e ```develop```, além de poder ser executado manualmente.
 
-- ```tests_CI.yml:``` Este workflow foi desenhado para a integração contínua (CI). Ele executa a suíte de testes de ponta a ponta em múltiplos navegadores (chromium e firefox) usando uma matriz e gera relatórios que são visíveis no próprio GitHub.
+### Workflows Disponíveis
+
+- **`tests_CI.yml`**: Workflow principal para integração contínua (CI) com as seguintes funcionalidades:
+  - ✅ Execução em múltiplos navegadores (Chromium, Firefox, WebKit)
+  - ✅ Cache inteligente de dependências para execução mais rápida
+  - ✅ Execução manual com seleção de navegador específico
+  - ✅ Timeout configurável (30 minutos)
+  - ✅ Geração de relatórios HTML aprimorados
+  - ✅ Upload de artefatos com retenção de 30 dias
+  - ✅ Publicação automática de relatórios no GitHub Pages
+
+### 🚀 Execução Manual
+
+O workflow pode ser executado manualmente com as seguintes opções:
+- **Todos os navegadores** (padrão)
+- **Chromium apenas**
+- **Firefox apenas** 
+- **WebKit apenas**
+
+### 📊 Relatórios no GitHub Pages
+
+Os relatórios de teste são automaticamente publicados no GitHub Pages, proporcionando:
+- 📈 Visão consolidada de todas as execuções
+- 🔗 Links diretos para relatórios HTML de cada navegador
+- 📅 Histórico de execuções com informações de commit e branch
+- 📱 Acesso mobile-friendly aos relatórios
+
+---
+
+## 🏃‍♂️ Execução Local
+
+Para executar os testes localmente, você pode usar os scripts disponíveis:
+
+### **Opção 1: Script Bash (`run_tests.sh`)**
+```bash
+# Executar com navegador padrão (Chromium) e tags padrão (smoke)
+./run_tests.sh
+
+# Executar com navegador específico
+./run_tests.sh firefox
+
+# Executar com navegador e tags específicas
+./run_tests.sh chromium regression
+
+# Executar em modo headless (sem interface gráfica)
+HEADLESS=true ./run_tests.sh
+```
+
+### **Opção 2: Script Python (`run_tests.py`)**
+```bash
+# Executar com navegador padrão (Chromium) e tags padrão (smoke)
+python run_tests.py
+
+# Executar com navegador específico
+python run_tests.py firefox
+
+# Executar com navegador e tags específicas
+python run_tests.py chromium regression
+
+# Executar com diretório de saída personalizado
+python run_tests.py chromium smoke ./meus-resultados
+```
+
+### **📋 Configurações Centralizadas**
+
+Ambos os scripts leem automaticamente o arquivo `robot_config.yml` para aplicar configurações padronizadas:
+
+- ⏱️ **Timeouts**: Configurações de timeout para testes, keywords e padrão
+- 🏷️ **Tags**: Tags de inclusão e exclusão padrão
+- 🌐 **Browser**: Configurações de viewport, headless, slow_mo
+- 🔄 **Retry**: Configurações de retry para testes falhados
+- 📊 **Relatórios**: Título e configurações de relatório
+- 📁 **Diretórios**: Diretório de saída padrão
+
+Se o arquivo `robot_config.yml` não existir, os scripts usam configurações padrão sensatas.
+
+### Pré-requisitos para Execução Local
+
+1. **Python 3.12+** instalado
+2. **Node.js 22+** instalado
+3. **Dependências Python** instaladas:
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. **Browser Library** inicializada:
+   ```bash
+   rfbrowser init
+   ```
 
 ---
 
@@ -70,7 +157,7 @@ O projeto segue a estrutura padrão do Robot Framework e inclui arquivos de conf
     📦 robot-actions/
     ┣ 📂 .github/
     ┃ └── workflows/
-    ┃     └── 📜 tests_CI.yml       # Workflow para execução de testes no GitHub Actions
+    ┃     └── 📜 tests_CI.yml       # Workflow principal para execução de testes e GitHub Pages
     ┣ 📂 resources/
     ┃ ├── 📜 actions.resource       # Palavras-chave de ações e interações
     ┃ └── 📜 base.resource          # Palavras-chave de configuração e utilidades
@@ -83,7 +170,11 @@ O projeto segue a estrutura padrão do Robot Framework e inclui arquivos de conf
     ┃ └── 📜 login.robot            # Arquivos de casos de teste
     ┣ 📜 .gitignore                 # Arquivos e pastas a serem ignorados pelo Git
     ┣ 📜 README.md                  # Documentação principal do repositório
-    ┗ 📜 requirements.txt           # Dependências do Python
+    ┣ 📜 requirements.txt           # Dependências do Python
+    ┣ 📜 robot_config.yml           # Configurações centralizadas do Robot Framework
+    ┣ 📜 run_tests.sh               # Script Bash para execução local dos testes
+    ┣ 📜 run_tests.py               # Script Python para execução local dos testes
+    ┗ 📜 config_parser.py           # Parser para configurações YAML
   ```
 
 </details>
