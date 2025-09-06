@@ -1,53 +1,212 @@
 name: E2E Tests
-run-name: Testes de CI com Robot Framework
+run-name: Testes de CI com Robot Framework - ${{ github.event.head_commit.message }}
+
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "develop" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main", "develop" ]
   workflow_dispatch:
+    inputs:
+      browser:
+        description: 'Navegador para executar os testes'
+        required: false
+        default: 'all'
+        type: choice
+        options:
+        - all
+        - chromium
+        - firefox
+        - webkit
+
+env:
+  PYTHON_VERSION: '3.12'
+  NODE_VERSION: '22'
 
 jobs:
-  tests:
-    strategy:
-      matrix:
-        browser: [chromium, firefox]
+  # Job para cache de dependências
+  cache-deps:
     runs-on: ubuntu-latest
-
+    outputs:
+      cache-hit: ${{ steps.cache-python.outputs.cache-hit }}
     steps:
-    - name: Get code
+    - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Use Node.js 22
+    - name: Cache Python dependencies
+      id: cache-python
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+
+  tests:
+    needs: cache-deps
+    strategy:
+      matrix:
+        browser: [chromium, firefox, webkit]
+        # Executa apenas o navegador selecionado se especificado
+        exclude:
+          - browser: chromium
+            when: ${{ github.event.inputs.browser != 'all' && github.event.inputs.browser != 'chromium' && github.event.inputs.browser != '' }}
+          - browser: firefox
+            when: ${{ github.event.inputs.browser != 'all' && github.event.inputs.browser != 'firefox' && github.event.inputs.browser != '' }}
+          - browser: webkit
+            when: ${{ github.event.inputs.browser != 'all' && github.event.inputs.browser != 'webkit' && github.event.inputs.browser != '' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js ${{ env.NODE_VERSION }}
       uses: actions/setup-node@v4
       with:
-        node-version: 22
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
 
-    - name: Setup Python
-      uses: actions/setup-python@v5.5.0
+    - name: Setup Python ${{ env.PYTHON_VERSION }}
+      uses: actions/setup-python@v5
       with:
-        python-version: 3.12
+        python-version: ${{ env.PYTHON_VERSION }}
 
-    - name: Install Deps
+    - name: Cache pip dependencies
+      uses: actions/cache@v4
+      if: needs.cache-deps.outputs.cache-hit != 'true'
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+
+    - name: Install Python dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+        pip install robotframework-htmlreport
 
-    - name : Browser Init
+    - name: Initialize Browser
       run: rfbrowser init
-    
+      env:
+        BROWSER: ${{ matrix.browser }}
+
+    - name: Create results directory
+      run: mkdir -p ./tests-results-CI/${{ matrix.browser }}
+
     - name: Run E2E Tests
-      run: robot -d ./tests-results-CI -v BROWSER:${{ matrix.browser }} tests
+      run: |
+        robot \
+          --outputdir ./tests-results-CI/${{ matrix.browser }} \
+          --variable BROWSER:${{ matrix.browser }} \
+          --variable HEADLESS:true \
+          --variable TIMEOUT:30 \
+          --loglevel INFO \
+          --include smoke \
+          tests/
+      continue-on-error: true
 
-    - name: Robot Reporter
-      uses: joonvena/robotframework-reporter-action@v2.5
-      with:
-        gh_access_token: ${{ secrets.GITHUB_TOKEN }}
-        report_path: tests-results-CI
+    - name: Generate HTML Report
+      if: always()
+      run: |
+        python -m robotframework_htmlreport \
+          ./tests-results-CI/${{ matrix.browser }}/output.xml \
+          ./tests-results-CI/${{ matrix.browser }}/report.html
 
-    - name: Upload Report
+    - name: Upload Test Results
       uses: actions/upload-artifact@v4
       if: always()
       with:
-        name: Test Report ${{ matrix.browser }}
-        path: tests-results-CI
+        name: test-results-${{ matrix.browser }}
+        path: tests-results-CI/${{ matrix.browser }}/
+        retention-days: 30
+
+    - name: Robot Framework Reporter
+      uses: joonvena/robotframework-reporter-action@v2.5
+      if: always()
+      with:
+        gh_access_token: ${{ secrets.GITHUB_TOKEN }}
+        report_path: tests-results-CI/${{ matrix.browser }}
+        report_title: "Test Results - ${{ matrix.browser }}"
+
+  # Job para consolidar resultados e publicar no GitHub Pages
+  publish-results:
+    needs: tests
+    runs-on: ubuntu-latest
+    if: always()
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Download all test results
+      uses: actions/download-artifact@v4
+      with:
+        path: ./all-results
+
+    - name: Setup Pages
+      uses: actions/configure-pages@v4
+
+    - name: Create consolidated report
+      run: |
+        mkdir -p ./gh-pages
+        echo "# Relatório de Testes E2E" > ./gh-pages/index.md
+        echo "" >> ./gh-pages/index.md
+        echo "## Execução: ${{ github.run_number }}" >> ./gh-pages/index.md
+        echo "**Data:** $(date)" >> ./gh-pages/index.md
+        echo "**Commit:** ${{ github.sha }}" >> ./gh-pages/index.md
+        echo "**Branch:** ${{ github.ref_name }}" >> ./gh-pages/index.md
+        echo "" >> ./gh-pages/index.md
+        
+        # Copiar resultados de cada navegador
+        for browser_dir in ./all-results/test-results-*/; do
+          if [ -d "$browser_dir" ]; then
+            browser_name=$(basename "$browser_dir" | sed 's/test-results-//')
+            echo "### Navegador: $browser_name" >> ./gh-pages/index.md
+            echo "" >> ./gh-pages/index.md
+            
+            # Copiar arquivos HTML
+            mkdir -p "./gh-pages/$browser_name"
+            cp "$browser_dir"/*.html "./gh-pages/$browser_name/" 2>/dev/null || true
+            cp "$browser_dir"/*.xml "./gh-pages/$browser_name/" 2>/dev/null || true
+            cp "$browser_dir"/*.log "./gh-pages/$browser_name/" 2>/dev/null || true
+            
+            # Adicionar links para os relatórios
+            if [ -f "./gh-pages/$browser_name/report.html" ]; then
+              echo "- [Relatório HTML](./$browser_name/report.html)" >> ./gh-pages/index.md
+            fi
+            if [ -f "./gh-pages/$browser_name/log.html" ]; then
+              echo "- [Log Detalhado](./$browser_name/log.html)" >> ./gh-pages/index.md
+            fi
+            echo "" >> ./gh-pages/index.md
+          fi
+        done
+
+    - name: Upload Pages artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: ./gh-pages
+
+  # Job para deploy no GitHub Pages
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: publish-results
+    if: always()
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    steps:
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
