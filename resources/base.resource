@@ -7,6 +7,7 @@ Resource            ./actions.resource
 *** Variables ***
 ${BASE_URL}         https://loginxp.vercel.app
 ${BROWSER}          chromium
+${CHANNEL}          stable
 ${IS_HEADLESS}      True
 
 *** Keywords ***
@@ -15,5 +16,5 @@ Start Browser
     New Page       ${BASE_URL}
 
 Finalizar e Tirar Screenshot
-    Take Screenshot    fullPage=true    filename=${BROWSER}-screenshot-{index}.png
+    Take Screenshot    fullPage=true    filename=robotframework-browser-lib-screenshot-${BROWSER}.png
     Close Browser
