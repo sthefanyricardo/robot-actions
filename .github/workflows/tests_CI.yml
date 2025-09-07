@@ -155,43 +155,54 @@ jobs:
     - name: Setup Pages
       uses: actions/configure-pages@v4
 
-    - name: Create consolidated report
+    - name: Create consolidated HTML report
       run: |
         mkdir -p ./gh-pages
-        echo "# Relatório de Testes E2E" > ./gh-pages/index.md
-        echo "" >> ./gh-pages/index.md
-        echo "## Execução: ${{ github.run_number }}" >> ./gh-pages/index.md
-        echo "**Data:** $(date)" >> ./gh-pages/index.md
-        echo "**Commit:** ${{ github.sha }}" >> ./gh-pages/index.md
-        echo "**Branch:** ${{ github.ref_name }}" >> ./gh-pages/index.md
-        echo "" >> ./gh-pages/index.md
-        
+        cat <<EOF > ./gh-pages/index.html
+        <!DOCTYPE html>
+        <html lang="pt-BR">
+        <head>
+        <meta charset="UTF-8">
+        <title>Relatório de Testes E2E</title>
+        <style>
+          body { font-family: Arial, sans-serif; margin: 20px; }
+          h1 { color: #2c3e50; }
+          h2 { color: #34495e; }
+          ul { list-style-type: disc; margin-left: 20px; }
+          li { margin-bottom: 5px; }
+        </style>
+        </head>
+        <body>
+        <h1>Relatório de Testes E2E</h1>
+        <h2>Execução: ${{ github.run_number }}</h2>
+        <p><strong>Data:</strong> $(date)</p>
+        <p><strong>Commit:</strong> ${{ github.sha }}</p>
+        <p><strong>Branch:</strong> ${{ github.ref_name }}</p>
+        EOF
+    
         # Copiar resultados de cada navegador
         for browser_dir in ./all-results/test-results-*/; do
           if [ -d "$browser_dir" ]; then
             browser_name=$(basename "$browser_dir" | sed 's/test-results-//')
-            echo "### Navegador: $browser_name" >> ./gh-pages/index.md
-            echo "" >> ./gh-pages/index.md
-            
-            # Copiar arquivos HTML
             mkdir -p "./gh-pages/$browser_name"
             cp -r "$browser_dir"/* "./gh-pages/$browser_name/" 2>/dev/null || true
-            
-            # Adicionar links para os relatórios
+    
+            echo "<h2>Navegador: $browser_name</h2>" >> ./gh-pages/index.html
+            echo "<ul>" >> ./gh-pages/index.html
+    
             if [ -f "./gh-pages/$browser_name/report.html" ]; then
-              echo "- [Relatório HTML](./$browser_name/report.html)" >> ./gh-pages/index.md
+              echo "<li><a href='./$browser_name/report.html'>Relatório HTML</a></li>" >> ./gh-pages/index.html
             fi
             if [ -f "./gh-pages/$browser_name/log.html" ]; then
-              echo "- [Log Detalhado](./$browser_name/log.html)" >> ./gh-pages/index.md
+              echo "<li><a href='./$browser_name/log.html'>Log Detalhado</a></li>" >> ./gh-pages/index.html
             fi
-            echo "" >> ./gh-pages/index.md
+    
+            echo "</ul>" >> ./gh-pages/index.html
           fi
         done
-
-    - name: Convert index.md to HTML
-      run: |
-        sudo apt-get install -y pandoc
-        pandoc ./gh-pages/index.md -o ./gh-pages/index.html
+    
+        # Fechar o HTML
+        echo "</body></html>" >> ./gh-pages/index.html
 
     - name: Upload Pages artifact
       uses: actions/upload-pages-artifact@v3
