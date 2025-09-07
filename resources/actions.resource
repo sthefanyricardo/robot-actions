@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation       Camada de ações da funcionalidade de login
 
-Resource            main.resource
+Resource            ./main.resource
 
 *** Keywords ***
 Submit Credentials
@@ -19,7 +19,7 @@ Toast have text
     Wait For Elements State    css=${selector}    visible    5
     Get Text                   css=${selector}    equal      ${target}
 
-    Take Screenshot        selector=${selector}  filename=screenshot-${BROWSER}-${CHANNEL}
+    Take Screenshot        selector=${selector}  filename=screenshot-${BROWSER}-${CHANNEL}-{index}
 
  Modal have text
     [Arguments]    ${target}

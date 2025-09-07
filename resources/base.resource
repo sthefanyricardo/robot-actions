@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation       Main
 
-Resource            main.resource
+Resource            ./main.resource
 
 *** Variables ***
 ${BASE_URL}         https://loginxp.vercel.app
