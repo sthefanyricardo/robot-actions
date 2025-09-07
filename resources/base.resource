@@ -1,8 +1,7 @@
 *** Settings ***
 Documentation       Main
 
-Library             Browser
-Resource            ./actions.resource
+Resource            main.resource
 
 *** Variables ***
 ${BASE_URL}         https://loginxp.vercel.app
