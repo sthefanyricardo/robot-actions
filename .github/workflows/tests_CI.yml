@@ -55,36 +55,29 @@ jobs:
 
       - name: Install Python dependencies
         run: |
-          echo "🐍 Instalando dependências Python..."
           python -m pip install --upgrade pip
-          echo "📦 Instalando pacotes do requirements.txt..."
           pip install -r requirements.txt
-          echo "✅ Dependências instaladas com sucesso!"
 
       - name: Initialize Browser
         run: |
-          echo "🌐 Inicializando browser: ${{ matrix.browser }}"
           rfbrowser init
-          echo "✅ Browser inicializado com sucesso!"
         env:
           BROWSER: ${{ matrix.browser }}
 
       - name: Install Microsoft Edge
         if: matrix.browser == 'edge'
         run: |
-          echo "🌐 Instalando Microsoft Edge..."
           sudo apt-get update
           sudo apt-get install -y microsoft-edge-stable
-          echo "✅ Edge instalado com sucesso!"
 
       - name: Create results directory
         run: mkdir -p ./tests-results-CI/${{ matrix.browser }}
 
       - name: Run E2E Tests
         run: |
-          echo "🚀 Executando testes para o navegador: ${{ matrix.browser }}"
-          echo "📁 Diretório de trabalho: $(pwd)"
-          echo "📂 Conteúdo do diretório tests:"
+          echo "Executando testes para o navegador: ${{ matrix.browser }}"
+          echo "Diretório de trabalho: $(pwd)"
+          echo "Conteúdo do diretório tests:"
           ls -la tests/ || echo "Diretório tests não encontrado"
 
           # Ajustar browser e channel
@@ -111,12 +104,12 @@ jobs:
       - name: Check Test Results
         if: always()
         run: |
-          echo "📊 Verificando resultados dos testes..."
+          echo "Verificando resultados dos testes..."
           if [ -f "./tests-results-CI/${{ matrix.browser }}/output.xml" ]; then
-            echo "✅ Arquivo output.xml encontrado!"
+            echo "Arquivo output.xml encontrado!"
             ls -la "./tests-results-CI/${{ matrix.browser }}/"
           else
-            echo "⚠️ Arquivo output.xml não encontrado."
+            echo "Arquivo output.xml não encontrado."
           fi
 
       - name: Upload Test Results
@@ -174,6 +167,7 @@ jobs:
           --reporttitle "Relatório Consolidado E2E" \
           --name "Robot Framework CI" \
           ./all-results/test-results-*/*.xml
+        continue-on-error: true
 
       - name: Copy browser assets to pages directory
         run: |
