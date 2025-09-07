@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation       Suíte de testes de login
 
-Resource            ./main.resource
+Resource            ../main.resource
 
 Test Setup          Start Browser
 Test Teardown       Finalizar e Tirar Screenshot
