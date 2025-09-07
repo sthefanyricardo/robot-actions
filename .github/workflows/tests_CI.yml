@@ -168,14 +168,18 @@ jobs:
           done
 
           # Gerar relatório consolidado com rebot
-          rebot \
-            --output ./gh-pages/output.xml \
-            --report ./gh-pages/report.html \
-            --log ./gh-pages/log.html \
-            --reporttitle "Relatório Consolidado E2E" \
-            --logtitle "Logs Consolidado E2E" \
-            --name "Robot Framework CI" \
-            $outputs
+          if [ -n "$outputs" ]; then
+            python -m robot.rebot \
+              --output ./gh-pages/output.xml \
+              --report ./gh-pages/report.html \
+              --log ./gh-pages/log.html \
+              --reporttitle "Relatório Consolidado E2E" \
+              --logtitle "Logs Consolidado E2E" \
+              --name "Robot Framework CI" \
+              $outputs
+          else
+            echo "⚠️ Nenhum output.xml encontrado para consolidar"
+          fi
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
