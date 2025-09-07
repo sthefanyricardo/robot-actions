@@ -17,7 +17,7 @@ on:
         - all
         - chromium
         - firefox
-        - webkit
+        - edge
 
 env:
   PYTHON_VERSION: '3.12'
@@ -27,7 +27,7 @@ jobs:
   tests:
     strategy:
       matrix:
-        browser: [chromium, firefox, webkit]
+        browser: [chromium, firefox, edge]
     runs-on: ubuntu-latest
     timeout-minutes: 30
 
@@ -68,10 +68,18 @@ jobs:
         echo "✅ Browser inicializado com sucesso!"
       env:
         BROWSER: ${{ matrix.browser }}
+    
+    - name: Install Microsoft Edge
+      if: matrix.browser == 'edge'
+      run: |
+        echo "🌐 Instalando Microsoft Edge..."
+        sudo apt-get update
+        sudo apt-get install -y microsoft-edge-stable
+        echo "✅ Edge instalado com sucesso!"
 
     - name: Create results directory
       run: mkdir -p ./tests-results-CI/${{ matrix.browser }}
-    
+
     - name: Run E2E Tests
       run: |
         echo "🚀 Executando testes para o navegador: ${{ matrix.browser }}"
@@ -79,9 +87,19 @@ jobs:
         echo "📂 Conteúdo do diretório tests:"
         ls -la tests/ || echo "Diretório tests não encontrado"
         
+        # Ajustar browser e channel
+        if [ "${{ matrix.browser }}" = "edge" ]; then
+          BROWSER=chromium
+          CHANNEL=msedge
+        else
+          BROWSER=${{ matrix.browser }}
+          CHANNEL=""
+        fi
+    
         robot \
           --outputdir ./tests-results-CI/${{ matrix.browser }} \
-          --variable BROWSER:${{ matrix.browser }} \
+          --variable BROWSER:$BROWSER \
+          --variable CHANNEL:$CHANNEL \
           --variable HEADLESS:true \
           --variable TIMEOUT:30 \
           --loglevel INFO \
