@@ -16,4 +16,4 @@ Start Browser
 
 Finalizar e Tirar Screenshot
     Take Screenshot    fullPage=true    filename=${BROWSER}-screenshot-{index}.png
-    Finish Browser
+    Close Browser
