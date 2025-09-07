@@ -17,7 +17,7 @@ on:
         - all
         - chromium
         - firefox
-        - webkit
+        - edge
 
 env:
   PYTHON_VERSION: '3.12'
@@ -27,7 +27,7 @@ jobs:
   tests:
     strategy:
       matrix:
-        browser: [chromium, firefox, webkit]
+        browser: [chromium, firefox, edge]
     runs-on: ubuntu-latest
     timeout-minutes: 30
 
