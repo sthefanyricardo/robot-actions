@@ -178,7 +178,6 @@ jobs:
       - name: Copy browser assets to pages directory
         run: |
           cp -r ./all-results/test-results-*/browser ./gh-pages/
-          cp -r ./all-results/test-results-*/*.txt ./gh-pages/
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
