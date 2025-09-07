@@ -16,5 +16,10 @@ Start Browser
     New Page       ${BASE_URL}
 
 Finalizar e Tirar Screenshot
-    Take Screenshot    fullPage=true    filename=screenshot-${BROWSER}-${CHANNEL}
+    IF    '${CHANNEL}' != ''
+        ${filename}    Set Variable    screenshot-${BROWSER}-${CHANNEL}
+    ELSE
+        ${filename}    Set Variable    screenshot-${BROWSER}
+    END
+    Take Screenshot    fullPage=true    filename=${filename}
     Close Browser
