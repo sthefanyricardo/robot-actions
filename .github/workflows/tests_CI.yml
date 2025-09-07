@@ -74,6 +74,8 @@ jobs:
         run: mkdir -p ./tests-results-CI/${{ matrix.browser }}
 
       - name: Run E2E Tests
+        env:
+          PLAYWRIGHT_LOG_FILENAME: ${{ matrix.browser }}-playwright-log.txt
         run: |
           echo "Executando testes para o navegador: ${{ matrix.browser }}"
           echo "Diretório de trabalho: $(pwd)"
@@ -99,8 +101,6 @@ jobs:
             --loglevel INFO \
             tests/
         continue-on-error: true
-        env:
-          PLAYWRIGHT_LOG_FILENAME: ${{ matrix.browser }}-playwright-log.txt
 
       - name: Check Test Results
         if: always()
