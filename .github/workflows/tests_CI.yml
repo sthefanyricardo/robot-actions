@@ -97,7 +97,7 @@ jobs:
           fi
 
           robot \
-            --name "${{ matrix.browser }} Tests" \
+            --name "Tests no navegador: ${{ matrix.browser }}" \
             --outputdir ./tests-results-CI/${{ matrix.browser }} \
             --variable BROWSER:$BROWSER \
             --variable CHANNEL:$CHANNEL \
@@ -170,9 +170,16 @@ jobs:
         run: |
           python -m robot.rebot \
           --outputdir ./gh-pages \
+          --report index.html \
           --reporttitle "Relatório Consolidado E2E" \
           --name "Robot Framework CI" \
           ./all-results/test-results-*/*.xml
+      
+      - name: Copy all arquives to pages directory
+        run: |
+          echo "Copiando todos os arquivos para o diretório final..."
+          cp ./all-results/test-results-*/*.png ./gh-pages/
+          cp ./all-results/test-results-*/*.txt ./gh-pages/
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
