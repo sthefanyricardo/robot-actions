@@ -147,6 +147,27 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Setup Python ${{ env.PYTHON_VERSION }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Cache pip dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install Python dependencies
+        run: |
+          echo "🐍 Instalando dependências Python..."
+          python -m pip install --upgrade pip
+          echo "📦 Instalando pacotes do requirements.txt..."
+          pip install -r requirements.txt
+          echo "✅ Dependências instaladas com sucesso!"
+
       - name: Download all test results
         uses: actions/download-artifact@v4
         with:
