@@ -68,6 +68,14 @@ jobs:
         echo "✅ Browser inicializado com sucesso!"
       env:
         BROWSER: ${{ matrix.browser }}
+    
+    - name: Install Microsoft Edge
+      if: matrix.browser == 'edge'
+      run: |
+        echo "🌐 Instalando Microsoft Edge..."
+        sudo apt-get update
+        sudo apt-get install -y microsoft-edge-stable
+        echo "✅ Edge instalado com sucesso!"
 
     - name: Create results directory
       run: mkdir -p ./tests-results-CI/${{ matrix.browser }}
@@ -79,9 +87,19 @@ jobs:
         echo "📂 Conteúdo do diretório tests:"
         ls -la tests/ || echo "Diretório tests não encontrado"
         
+        # Ajustar browser e channel
+        if [ "${{ matrix.browser }}" = "edge" ]; then
+          BROWSER=chromium
+          CHANNEL=msedge
+        else
+          BROWSER=${{ matrix.browser }}
+          CHANNEL=""
+        fi
+    
         robot \
           --outputdir ./tests-results-CI/${{ matrix.browser }} \
-          --variable BROWSER:${{ matrix.browser }} \
+          --variable BROWSER:$BROWSER \
+          --variable CHANNEL:$CHANNEL \
           --variable HEADLESS:true \
           --variable TIMEOUT:30 \
           --loglevel INFO \
