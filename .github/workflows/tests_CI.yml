@@ -152,21 +152,10 @@ jobs:
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
-      - name: Cache pip dependencies
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
-
-      - name: Install Python dependencies
+      - name: Install Robot Framework
         run: |
-          echo "🐍 Instalando dependências Python..."
           python -m pip install --upgrade pip
-          echo "📦 Instalando pacotes do requirements.txt..."
-          pip install -r requirements.txt
-          echo "✅ Dependências instaladas com sucesso!"
+          pip install robotframework
 
       - name: Download all test results
         uses: actions/download-artifact@v4
@@ -178,29 +167,11 @@ jobs:
 
       - name: Create consolidated report with rebot
         run: |
-          mkdir -p ./gh-pages
-
-          # Criar lista de outputs para consolidar
-          outputs=""
-          for browser_dir in ./all-results/test-results-*/; do
-            if [ -f "$browser_dir/output.xml" ]; then
-              outputs="$outputs $browser_dir/output.xml"
-            fi
-          done
-
-          # Gerar relatório consolidado com rebot
-          if [ -n "$outputs" ]; then
-            python -m robot.rebot \
-              --output ./gh-pages/output.xml \
-              --report ./gh-pages/report.html \
-              --log ./gh-pages/log.html \
-              --reporttitle "Relatório Consolidado E2E" \
-              --logtitle "Logs Consolidado E2E" \
-              --name "Robot Framework CI" \
-              $outputs
-          else
-            echo "⚠️ Nenhum output.xml encontrado para consolidar"
-          fi
+          python -m robot.rebot \
+          --outputdir ./gh-pages \
+          --reporttitle "Relatório Consolidado E2E" \
+          --name "Robot Framework CI" \
+          ./all-results/test-results-*/*.xml
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
