@@ -1,5 +1,6 @@
 ![poster](./.github/poster.png)
-![Robot Framework](https://img.shields.io/badge/Robot_Framework-Testing-04C38E?logo=robotframework) ![CI/CD](https://img.shields.io/github/actions/workflow/status/sthefanyricardo/robot-actions/tests_CI.yml?label=CI/CD&logo=github) ![Último commit](https://img.shields.io/github/last-commit/sthefanyricardo/robot-actions?label=Último%20commit&style=flat&logo=git)
+![Robot Framework](https://img.shields.io/badge/Robot_Framework-Testing-04C38E?logo=robotframework) ![CI/CD](https://img.shields.io/github/actions/workflow/status/sthefanyricardo/robot-actions/tests_CI.yml?label=CI/CD&logo=github) ![Último commit](https://img.shields.io/github/last-commit/sthefanyricardo/robot-actions?label=Último%20commit&style=flat&logo=git) [![GitHub Pages](https://img.shields.io/badge/GitHub-Pages-blue?logo=github)](https://sthefanyricardo.github.io/robot-actions/)
+
 
 ---
 
