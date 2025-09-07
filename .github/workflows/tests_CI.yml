@@ -177,7 +177,7 @@ jobs:
       
       - name: Copy arquives to pages directory
         run: |
-          echo "Copiando todos os arquivos para o diretório final..."
+          echo "Copiando arquivos de imagens e txt para o diretório final..."
           cp -r ./all-results/test-results-*/browser ./gh-pages/
           cp ./all-results/test-results-*/*.txt ./gh-pages/
 
