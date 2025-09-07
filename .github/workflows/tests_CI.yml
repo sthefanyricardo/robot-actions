@@ -178,7 +178,7 @@ jobs:
       - name: Copy arquives to pages directory
         run: |
           echo "Copiando todos os arquivos para o diretório final..."
-          cp ./all-results/test-results-*/*.png ./gh-pages/
+          cp -r ./all-results/test-results-*/browser ./gh-pages/
           cp ./all-results/test-results-*/*.txt ./gh-pages/
 
       - name: Upload Pages artifact
