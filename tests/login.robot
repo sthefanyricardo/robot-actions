@@ -4,7 +4,7 @@ Documentation       Suíte de testes de login
 Resource            ../resources/base.resource
 
 Test Setup          Start Browser
-Test Teardown       Finish Browser
+Test Teardown       Finalizar e Tirar Screenshot
 
 *** Test Cases ***
 Senha incorreta
