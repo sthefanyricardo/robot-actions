@@ -16,5 +16,5 @@ Start Browser
     New Page       ${BASE_URL}
 
 Finalizar e Tirar Screenshot
-    Take Screenshot    fullPage=true    filename=robotframework-browser-lib-screenshot-${BROWSER}.png
+    Take Screenshot    fullPage=true    filename=screenshot-${BROWSER}-${CHANNEL}
     Close Browser
