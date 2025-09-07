@@ -3,25 +3,25 @@ run-name: Testes de CI com Robot Framework - ${{ github.event.head_commit.messag
 
 on:
   push:
-    branches: [ "main", "develop" ]
+    branches: ["main", "develop"]
   pull_request:
-    branches: [ "main", "develop" ]
+    branches: ["main", "develop"]
   workflow_dispatch:
     inputs:
       browser:
-        description: 'Navegador para executar os testes'
+        description: "Navegador para executar os testes"
         required: false
-        default: 'all'
+        default: "all"
         type: choice
         options:
-        - all
-        - chromium
-        - firefox
-        - edge
+          - all
+          - chromium
+          - firefox
+          - edge
 
 env:
-  PYTHON_VERSION: '3.12'
-  NODE_VERSION: '22'
+  PYTHON_VERSION: "3.12"
+  NODE_VERSION: "22"
 
 jobs:
   tests:
@@ -32,106 +32,106 @@ jobs:
     timeout-minutes: 30
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Setup Node.js ${{ env.NODE_VERSION }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ env.NODE_VERSION }}
+      - name: Setup Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
 
-    - name: Setup Python ${{ env.PYTHON_VERSION }}
-      uses: actions/setup-python@v5
-      with:
-        python-version: ${{ env.PYTHON_VERSION }}
+      - name: Setup Python ${{ env.PYTHON_VERSION }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
 
-    - name: Cache pip dependencies
-      uses: actions/cache@v4
-      with:
-        path: ~/.cache/pip
-        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-        restore-keys: |
-          ${{ runner.os }}-pip-
+      - name: Cache pip dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
 
-    - name: Install Python dependencies
-      run: |
-        echo "🐍 Instalando dependências Python..."
-        python -m pip install --upgrade pip
-        echo "📦 Instalando pacotes do requirements.txt..."
-        pip install -r requirements.txt
-        echo "✅ Dependências instaladas com sucesso!"
+      - name: Install Python dependencies
+        run: |
+          echo "🐍 Instalando dependências Python..."
+          python -m pip install --upgrade pip
+          echo "📦 Instalando pacotes do requirements.txt..."
+          pip install -r requirements.txt
+          echo "✅ Dependências instaladas com sucesso!"
 
-    - name: Initialize Browser
-      run: |
-        echo "🌐 Inicializando browser: ${{ matrix.browser }}"
-        rfbrowser init
-        echo "✅ Browser inicializado com sucesso!"
-      env:
-        BROWSER: ${{ matrix.browser }}
-    
-    - name: Install Microsoft Edge
-      if: matrix.browser == 'edge'
-      run: |
-        echo "🌐 Instalando Microsoft Edge..."
-        sudo apt-get update
-        sudo apt-get install -y microsoft-edge-stable
-        echo "✅ Edge instalado com sucesso!"
+      - name: Initialize Browser
+        run: |
+          echo "🌐 Inicializando browser: ${{ matrix.browser }}"
+          rfbrowser init
+          echo "✅ Browser inicializado com sucesso!"
+        env:
+          BROWSER: ${{ matrix.browser }}
 
-    - name: Create results directory
-      run: mkdir -p ./tests-results-CI/${{ matrix.browser }}
+      - name: Install Microsoft Edge
+        if: matrix.browser == 'edge'
+        run: |
+          echo "🌐 Instalando Microsoft Edge..."
+          sudo apt-get update
+          sudo apt-get install -y microsoft-edge-stable
+          echo "✅ Edge instalado com sucesso!"
 
-    - name: Run E2E Tests
-      run: |
-        echo "🚀 Executando testes para o navegador: ${{ matrix.browser }}"
-        echo "📁 Diretório de trabalho: $(pwd)"
-        echo "📂 Conteúdo do diretório tests:"
-        ls -la tests/ || echo "Diretório tests não encontrado"
-        
-        # Ajustar browser e channel
-        if [ "${{ matrix.browser }}" = "edge" ]; then
-          BROWSER=chromium
-          CHANNEL=msedge
-        else
-          BROWSER=${{ matrix.browser }}
-          CHANNEL=""
-        fi
-    
-        robot \
-          --outputdir ./tests-results-CI/${{ matrix.browser }} \
-          --variable BROWSER:$BROWSER \
-          --variable CHANNEL:$CHANNEL \
-          --variable HEADLESS:true \
-          --variable TIMEOUT:30 \
-          --loglevel INFO \
-          --include smoke \
-          tests/
-      continue-on-error: true
+      - name: Create results directory
+        run: mkdir -p ./tests-results-CI/${{ matrix.browser }}
 
-    - name: Check Test Results
-      if: always()
-      run: |
-        echo "📊 Verificando resultados dos testes..."
-        if [ -f "./tests-results-CI/${{ matrix.browser }}/output.xml" ]; then
-          echo "✅ Arquivo output.xml encontrado!"
-          ls -la "./tests-results-CI/${{ matrix.browser }}/"
-        else
-          echo "⚠️ Arquivo output.xml não encontrado."
-        fi
+      - name: Run E2E Tests
+        run: |
+          echo "🚀 Executando testes para o navegador: ${{ matrix.browser }}"
+          echo "📁 Diretório de trabalho: $(pwd)"
+          echo "📂 Conteúdo do diretório tests:"
+          ls -la tests/ || echo "Diretório tests não encontrado"
 
-    - name: Upload Test Results
-      uses: actions/upload-artifact@v4
-      if: always()
-      with:
-        name: test-results-${{ matrix.browser }}
-        path: tests-results-CI/${{ matrix.browser }}/
-        retention-days: 30
+          # Ajustar browser e channel
+          if [ "${{ matrix.browser }}" = "edge" ]; then
+            BROWSER=chromium
+            CHANNEL=msedge
+          else
+            BROWSER=${{ matrix.browser }}
+            CHANNEL=""
+          fi
 
-    - name: Robot Framework Reporter
-      uses: joonvena/robotframework-reporter-action@v2.5
-      if: always()
-      with:
-        gh_access_token: ${{ secrets.GITHUB_TOKEN }}
-        report_path: tests-results-CI/${{ matrix.browser }}
+          robot \
+            --outputdir ./tests-results-CI/${{ matrix.browser }} \
+            --variable BROWSER:$BROWSER \
+            --variable CHANNEL:$CHANNEL \
+            --variable HEADLESS:true \
+            --variable TIMEOUT:30 \
+            --loglevel INFO \
+            --include smoke \
+            tests/
+        continue-on-error: true
+
+      - name: Check Test Results
+        if: always()
+        run: |
+          echo "📊 Verificando resultados dos testes..."
+          if [ -f "./tests-results-CI/${{ matrix.browser }}/output.xml" ]; then
+            echo "✅ Arquivo output.xml encontrado!"
+            ls -la "./tests-results-CI/${{ matrix.browser }}/"
+          else
+            echo "⚠️ Arquivo output.xml não encontrado."
+          fi
+
+      - name: Upload Test Results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-results-${{ matrix.browser }}
+          path: tests-results-CI/${{ matrix.browser }}/
+          retention-days: 30
+
+      - name: Robot Framework Reporter
+        uses: joonvena/robotframework-reporter-action@v2.5
+        if: always()
+        with:
+          gh_access_token: ${{ secrets.GITHUB_TOKEN }}
+          report_path: tests-results-CI/${{ matrix.browser }}
 
   # Job para consolidar resultados e publicar no GitHub Pages
   publish-results:
@@ -144,70 +144,70 @@ jobs:
       id-token: write
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Download all test results
-      uses: actions/download-artifact@v4
-      with:
-        path: ./all-results
+      - name: Download all test results
+        uses: actions/download-artifact@v4
+        with:
+          path: ./all-results
 
-    - name: Setup Pages
-      uses: actions/configure-pages@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
 
-    - name: Create consolidated HTML report
-      run: |
-        mkdir -p ./gh-pages
-        cat <<EOF > ./gh-pages/index.html
-        <!DOCTYPE html>
-        <html lang="pt-BR">
-        <head>
-        <meta charset="UTF-8">
-        <title>Relatório de Testes E2E</title>
-        <style>
-          body { font-family: Arial, sans-serif; margin: 20px; }
-          h1 { color: #2c3e50; }
-          h2 { color: #34495e; }
-          ul { list-style-type: disc; margin-left: 20px; }
-          li { margin-bottom: 5px; }
-        </style>
-        </head>
-        <body>
-        <h1>Relatório de Testes E2E</h1>
-        <h2>Execução: ${{ github.run_number }}</h2>
-        <p><strong>Data:</strong> $(date)</p>
-        <p><strong>Commit:</strong> ${{ github.sha }}</p>
-        <p><strong>Branch:</strong> ${{ github.ref_name }}</p>
-        EOF
-    
-        # Copiar resultados de cada navegador
-        for browser_dir in ./all-results/test-results-*/; do
-          if [ -d "$browser_dir" ]; then
-            browser_name=$(basename "$browser_dir" | sed 's/test-results-//')
-            mkdir -p "./gh-pages/$browser_name"
-            cp -r "$browser_dir"/* "./gh-pages/$browser_name/" 2>/dev/null || true
-    
-            echo "<h2>Navegador: $browser_name</h2>" >> ./gh-pages/index.html
-            echo "<ul>" >> ./gh-pages/index.html
-    
-            if [ -f "./gh-pages/$browser_name/report.html" ]; then
-              echo "<li><a href='./$browser_name/report.html'>Relatório HTML</a></li>" >> ./gh-pages/index.html
+      - name: Create consolidated HTML report
+        run: |
+          mkdir -p ./gh-pages
+          cat <<EOF > ./gh-pages/index.html
+          <!DOCTYPE html>
+          <html lang="pt-BR">
+          <head>
+          <meta charset="UTF-8">
+          <title>Relatório de Testes E2E</title>
+          <style>
+            body { font-family: Arial, sans-serif; margin: 20px; }
+            h1 { color: #2c3e50; }
+            h2 { color: #34495e; }
+            ul { list-style-type: disc; margin-left: 20px; }
+            li { margin-bottom: 5px; }
+          </style>
+          </head>
+          <body>
+          <h1>Relatório de Testes E2E</h1>
+          <h2>Execução: ${{ github.run_number }}</h2>
+          <p><strong>Data:</strong> $(date)</p>
+          <p><strong>Commit:</strong> ${{ github.sha }}</p>
+          <p><strong>Branch:</strong> ${{ github.ref_name }}</p>
+          EOF
+
+          # Copiar resultados de cada navegador
+          for browser_dir in ./all-results/test-results-*/; do
+            if [ -d "$browser_dir" ]; then
+              browser_name=$(basename "$browser_dir" | sed 's/test-results-//')
+              mkdir -p "./gh-pages/$browser_name"
+              cp -r "$browser_dir"/* "./gh-pages/$browser_name/" 2>/dev/null || true
+
+              echo "<h2>Navegador: $browser_name</h2>" >> ./gh-pages/index.html
+              echo "<ul>" >> ./gh-pages/index.html
+
+              if [ -f "./gh-pages/$browser_name/report.html" ]; then
+                echo "<li><a href='./$browser_name/report.html'>Relatório HTML</a></li>" >> ./gh-pages/index.html
+              fi
+              if [ -f "./gh-pages/$browser_name/log.html" ]; then
+                echo "<li><a href='./$browser_name/log.html'>Log Detalhado</a></li>" >> ./gh-pages/index.html
+              fi
+
+              echo "</ul>" >> ./gh-pages/index.html
             fi
-            if [ -f "./gh-pages/$browser_name/log.html" ]; then
-              echo "<li><a href='./$browser_name/log.html'>Log Detalhado</a></li>" >> ./gh-pages/index.html
-            fi
-    
-            echo "</ul>" >> ./gh-pages/index.html
-          fi
-        done
-    
-        # Fechar o HTML
-        echo "</body></html>" >> ./gh-pages/index.html
+          done
 
-    - name: Upload Pages artifact
-      uses: actions/upload-pages-artifact@v3
-      with:
-        path: ./gh-pages
+          # Fechar o HTML
+          echo "</body></html>" >> ./gh-pages/index.html
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./gh-pages
 
   # Job para deploy no GitHub Pages
   deploy:
@@ -223,6 +223,6 @@ jobs:
       id-token: write
 
     steps:
-    - name: Deploy to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@v4
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
