@@ -14,5 +14,6 @@ Start Browser
     New Browser    browser=${BROWSER}    headless=${IS_HEADLESS}  channel=${CHANNEL}
     New Page       ${BASE_URL}
 
-Finish Browser
-    Take Screenshot    fullPage=true
+Finalizar e Tirar Screenshot
+    Take Screenshot    fullPage=true    filename=${BROWSER}-screenshot-{index}.png
+    Finish Browser
