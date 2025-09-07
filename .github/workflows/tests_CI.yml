@@ -97,7 +97,6 @@ jobs:
             --variable HEADLESS:true \
             --variable TIMEOUT:30 \
             --loglevel INFO \
-            --include smoke \
             tests/
         continue-on-error: true
         env:
