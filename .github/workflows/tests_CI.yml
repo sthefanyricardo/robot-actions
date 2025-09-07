@@ -3,9 +3,9 @@ run-name: Testes de CI com Robot Framework - ${{ github.event.head_commit.messag
 
 on:
   push:
-    branches: ["main", "develop"]
+    branches: ["main"]
   pull_request:
-    branches: ["main", "develop"]
+    branches: ["main"]
   workflow_dispatch:
     inputs:
       browser:

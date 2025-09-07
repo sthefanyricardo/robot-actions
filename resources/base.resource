@@ -15,5 +15,5 @@ Start Browser
     New Page       ${BASE_URL}
 
 Finalizar e Tirar Screenshot
-    Take Screenshot    fullPage=true    filename=${BROWSER}-screenshot-{index}.png
+    Take Screenshot    fullPage=true    filename=${BROWSER}-screenshot-${index}.png
     Close Browser
