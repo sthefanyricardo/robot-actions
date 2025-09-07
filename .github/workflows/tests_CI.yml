@@ -175,7 +175,7 @@ jobs:
           --name "Robot Framework CI" \
           ./all-results/test-results-*/*.xml
       
-      - name: Copy all arquives to pages directory
+      - name: Copy arquives to pages directory
         run: |
           echo "Copiando todos os arquivos para o diretório final..."
           cp ./all-results/test-results-*/*.png ./gh-pages/
@@ -191,8 +191,8 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
     needs: publish-results
+    runs-on: ubuntu-latest
     if: always()
     permissions:
       contents: read
