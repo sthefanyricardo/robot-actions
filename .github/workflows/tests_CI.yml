@@ -100,6 +100,8 @@ jobs:
             --include smoke \
             tests/
         continue-on-error: true
+        env:
+          PLAYWRIGHT_LOG_FILENAME: ${{ matrix.browser }}-playwright-log.txt
 
       - name: Check Test Results
         if: always()
