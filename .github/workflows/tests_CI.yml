@@ -86,7 +86,7 @@ jobs:
             CHANNEL=msedge
           else
             BROWSER=${{ matrix.browser }}
-            CHANNEL="stable"
+            CHANNEL=""
           fi
 
           robot \
