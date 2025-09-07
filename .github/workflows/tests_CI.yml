@@ -17,7 +17,7 @@ on:
         - all
         - chromium
         - firefox
-        - edge
+        - webkit
 
 env:
   PYTHON_VERSION: '3.12'
@@ -27,7 +27,7 @@ jobs:
   tests:
     strategy:
       matrix:
-        browser: [chromium, firefox, edge]
+        browser: [chromium, firefox, webkit]
     runs-on: ubuntu-latest
     timeout-minutes: 30
 
@@ -68,18 +68,10 @@ jobs:
         echo "✅ Browser inicializado com sucesso!"
       env:
         BROWSER: ${{ matrix.browser }}
-    
-    - name: Install Microsoft Edge
-      if: matrix.browser == 'edge'
-      run: |
-        echo "🌐 Instalando Microsoft Edge..."
-        sudo apt-get update
-        sudo apt-get install -y microsoft-edge-stable
-        echo "✅ Edge instalado com sucesso!"
 
     - name: Create results directory
       run: mkdir -p ./tests-results-CI/${{ matrix.browser }}
-
+    
     - name: Run E2E Tests
       run: |
         echo "🚀 Executando testes para o navegador: ${{ matrix.browser }}"
@@ -87,19 +79,9 @@ jobs:
         echo "📂 Conteúdo do diretório tests:"
         ls -la tests/ || echo "Diretório tests não encontrado"
         
-        # Ajustar browser e channel
-        if [ "${{ matrix.browser }}" = "edge" ]; then
-          BROWSER=chromium
-          CHANNEL=msedge
-        else
-          BROWSER=${{ matrix.browser }}
-          CHANNEL=""
-        fi
-    
         robot \
           --outputdir ./tests-results-CI/${{ matrix.browser }} \
-          --variable BROWSER:$BROWSER \
-          --variable CHANNEL:$CHANNEL \
+          --variable BROWSER:${{ matrix.browser }} \
           --variable HEADLESS:true \
           --variable TIMEOUT:30 \
           --loglevel INFO \
@@ -175,9 +157,7 @@ jobs:
             
             # Copiar arquivos HTML
             mkdir -p "./gh-pages/$browser_name"
-            cp "$browser_dir"/*.html "./gh-pages/$browser_name/" 2>/dev/null || true
-            cp "$browser_dir"/*.xml "./gh-pages/$browser_name/" 2>/dev/null || true
-            cp "$browser_dir"/*.log "./gh-pages/$browser_name/" 2>/dev/null || true
+            cp -r "$browser_dir"/* "./gh-pages/$browser_name/" 2>/dev/null || true
             
             # Adicionar links para os relatórios
             if [ -f "./gh-pages/$browser_name/report.html" ]; then
@@ -189,11 +169,6 @@ jobs:
             echo "" >> ./gh-pages/index.md
           fi
         done
-  
-    - name: Convert index.md to HTML
-      run: |
-        sudo apt-get install -y pandoc
-        pandoc ./gh-pages/index.md -o ./gh-pages/index.html
 
     - name: Upload Pages artifact
       uses: actions/upload-pages-artifact@v3
