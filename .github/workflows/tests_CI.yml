@@ -97,6 +97,7 @@ jobs:
           fi
 
           robot \
+            --name "${{ matrix.browser }} Tests" \
             --outputdir ./tests-results-CI/${{ matrix.browser }} \
             --variable BROWSER:$BROWSER \
             --variable CHANNEL:$CHANNEL \
