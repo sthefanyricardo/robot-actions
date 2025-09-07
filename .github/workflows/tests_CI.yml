@@ -174,12 +174,11 @@ jobs:
           --reporttitle "Relatório Consolidado E2E" \
           --name "Robot Framework CI" \
           ./all-results/test-results-*/*.xml
-      
-      - name: Copy arquives to pages directory
+
+      - name: Copy browser assets to pages directory
         run: |
-          echo "Copiando arquivos de imagens e txt para o diretório final..."
           cp -r ./all-results/test-results-*/browser ./gh-pages/
-          cp ./all-results/test-results-*/*.txt ./gh-pages/
+          cp -r ./all-results/test-results-*/*.txt ./gh-pages/
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
