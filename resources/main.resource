@@ -3,6 +3,6 @@ Documentation       Main
 
 Library             Browser
 
-Resource            actions.resource
+Resource            ./actions.resource
 
-Resource            base.resource
+Resource            ./base.resource
