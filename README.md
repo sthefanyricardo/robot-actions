@@ -60,11 +60,8 @@ Os fluxos de trabalho (workflows) estão configurados no diretório ```.github/w
 
 - **`tests_CI.yml`**: Workflow principal para integração contínua (CI) com as seguintes funcionalidades:
   - ✅ Execução em múltiplos navegadores (Chromium, Firefox, WebKit)
-  - ✅ Cache inteligente de dependências para execução mais rápida
   - ✅ Execução manual com seleção de navegador específico
-  - ✅ Timeout configurável (30 minutos)
   - ✅ Geração de relatórios HTML aprimorados
-  - ✅ Upload de artefatos com retenção de 30 dias
   - ✅ Publicação automática de relatórios no GitHub Pages
 
 ### 🚀 Execução Manual
@@ -86,51 +83,6 @@ Os relatórios de teste são automaticamente publicados no GitHub Pages, proporc
 ---
 
 ## 🏃‍♂️ Execução Local
-
-Para executar os testes localmente, você pode usar os scripts disponíveis:
-
-### **Opção 1: Script Bash (`run_tests.sh`)**
-```bash
-# Executar com navegador padrão (Chromium) e tags padrão (smoke)
-./run_tests.sh
-
-# Executar com navegador específico
-./run_tests.sh firefox
-
-# Executar com navegador e tags específicas
-./run_tests.sh chromium regression
-
-# Executar em modo headless (sem interface gráfica)
-HEADLESS=true ./run_tests.sh
-```
-
-### **Opção 2: Script Python (`run_tests.py`)**
-```bash
-# Executar com navegador padrão (Chromium) e tags padrão (smoke)
-python run_tests.py
-
-# Executar com navegador específico
-python run_tests.py firefox
-
-# Executar com navegador e tags específicas
-python run_tests.py chromium regression
-
-# Executar com diretório de saída personalizado
-python run_tests.py chromium smoke ./meus-resultados
-```
-
-### **📋 Configurações Centralizadas**
-
-Ambos os scripts leem automaticamente o arquivo `robot_config.yml` para aplicar configurações padronizadas:
-
-- ⏱️ **Timeouts**: Configurações de timeout para testes, keywords e padrão
-- 🏷️ **Tags**: Tags de inclusão e exclusão padrão
-- 🌐 **Browser**: Configurações de viewport, headless, slow_mo
-- 🔄 **Retry**: Configurações de retry para testes falhados
-- 📊 **Relatórios**: Título e configurações de relatório
-- 📁 **Diretórios**: Diretório de saída padrão
-
-Se o arquivo `robot_config.yml` não existir, os scripts usam configurações padrão sensatas.
 
 ### Pré-requisitos para Execução Local
 
